@@ -212,8 +212,6 @@
             font-variant-numeric: tabular-nums;
         }
         tr.highlight td { background: #fff5e0; border-left: 3px solid #d9a75c; }
-        .highlight-note { display:flex; align-items:center; gap:9px; margin:10px 0 2px; padding:9px 12px; border:1px solid #f0dfb9; background:#fffaf0; color:#6d5a34; border-radius:9px; font-size:12px; }
-        .highlight-note-mark { width:14px; height:14px; flex:0 0 14px; border-radius:3px; background:#fff5e0; border:1px solid #d9a75c; }
         tr:hover td { background: #f4fbf9; }
 
         .searchable-select {
@@ -254,7 +252,22 @@
         }
         .option-item:hover { background: #e4f3ed; }
 
-        .country-tag {
+        .country-flag {
+    width: 24px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: -3px;
+    flex: 0 0 auto;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.08);
+}
+.country-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+.country-tag {
             display: inline-block;
             background: #ecf6f2;
             padding: 5px 12px;
@@ -560,25 +573,7 @@
             .map-wrapper { max-height: 500px; min-height: 240px; }
             .map-wrapper svg { width: 900px; min-width: 900px; }
         }
-    
-/* ===== QUARANTINE ANALYTICS 2.0 ===== */
-:root{--qa-accent:#1e6b5e;--qa-accent2:#2d8a78;--qa-bg:#f5faf8;--qa-border:#dbeae6;--qa-text:#173b35}
-.analytics-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:14px 0}.metric-card{background:linear-gradient(145deg,#fff,#f7fcfa);border:1px solid var(--qa-border);border-radius:15px;padding:16px;box-shadow:0 3px 12px rgba(30,107,94,.05)}.metric-card .metric-label{font-size:12px;color:#66847d;text-transform:uppercase;letter-spacing:.04em}.metric-card .metric-value{font-size:28px;font-weight:750;color:var(--qa-text);margin-top:5px}.metric-card .metric-sub{font-size:12px;color:#7b9690;margin-top:3px}
-.analytics-layout{display:grid;grid-template-columns:1fr 1fr;gap:14px}.analytics-card{background:#fff;border:1px solid var(--qa-border);border-radius:15px;padding:16px;overflow:hidden}.analytics-card h3{margin:0 0 12px;color:var(--qa-text)}.bar-row{display:grid;grid-template-columns:minmax(120px,1fr) 3fr 45px;gap:9px;align-items:center;margin:9px 0;font-size:13px}.bar-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bar-track{height:9px;background:#edf4f1;border-radius:99px;overflow:hidden}.bar-fill{height:100%;background:linear-gradient(90deg,var(--qa-accent),#61b6a3);border-radius:99px;min-width:2px}.bar-value{text-align:right;font-weight:700;color:var(--qa-text)}.analytics-filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.analytics-filters .field{min-width:0}.analytics-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.btn-secondary{border:1px solid var(--qa-border);background:#fff;color:var(--qa-text);padding:9px 13px;border-radius:10px;cursor:pointer}.btn-secondary:hover{background:#f1f8f5}.pill-row{display:flex;gap:6px;flex-wrap:wrap}.research-pill{padding:6px 9px;border-radius:999px;background:#eef7f4;color:#255e54;font-size:12px}
-.country-insight{margin-top:12px;padding:12px;border-radius:12px;background:#f7fbfa;border:1px solid #e4efec}.empty-state{padding:28px;text-align:center;color:#729089}.version-badge{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;background:#eaf6f2;color:#1e6b5e;font-size:11px;font-weight:700}
-@media(max-width:900px){.analytics-grid{grid-template-columns:repeat(2,1fr)}.analytics-layout{grid-template-columns:1fr}.analytics-filters{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.analytics-grid{grid-template-columns:1fr 1fr}.analytics-filters{grid-template-columns:1fr}.bar-row{grid-template-columns:105px 1fr 38px}}
-
-/* ===== MODERN ANALYTICS UI ===== */
-.analytics-hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;padding:22px;margin-bottom:14px;border:1px solid var(--qa-border);border-radius:18px;background:linear-gradient(135deg,#f7fcfa,#eef8f4);box-shadow:0 8px 28px rgba(30,107,94,.06)}
-.analytics-kicker{font-size:11px;letter-spacing:.14em;font-weight:800;color:var(--qa-accent2);margin-bottom:5px}.analytics-hero h2{margin:0;color:var(--qa-text);font-size:25px}.analytics-hero p{margin:7px 0 0;color:#66847d;max-width:760px;font-size:13px;line-height:1.5}.analytics-hero-actions{display:flex;gap:8px;flex-wrap:wrap}.advanced-filters{padding:14px;border:1px solid var(--qa-border);border-radius:15px;background:#fff;box-shadow:0 3px 14px rgba(30,107,94,.04)}
-.analytics-dashboard-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin-top:14px}.analytics-wide{min-height:250px}.card-heading{display:flex;justify-content:space-between;gap:10px;margin-bottom:14px}.card-heading h3{margin:0}.card-heading span{display:block;margin-top:3px;color:#7a938d;font-size:12px}.profile-chart{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:end;min-height:180px}.profile-item{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:180px}.profile-bar-wrap{height:135px;width:54px;display:flex;align-items:flex-end}.profile-bar{width:100%;border-radius:10px 10px 3px 3px;background:linear-gradient(180deg,#54aa98,#1e6b5e);min-height:4px}.profile-value{font-weight:800;color:var(--qa-text);margin-top:7px}.profile-label{text-align:center;font-size:12px;color:#6c8881;margin-top:4px}.geo-stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}.geo-stat{padding:11px;border:1px solid #e4efec;border-radius:11px;background:#f9fcfb}.geo-stat b{display:block;font-size:20px;color:var(--qa-text)}.geo-stat span{font-size:11px;color:#718b85}.comparison-card{margin-top:14px}.comparison-controls{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end}.comparison-result{margin-top:14px}.compare-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}.compare-box{padding:14px;border:1px solid #e3efeb;border-radius:12px;background:#fafdfc}.compare-box h4{margin:0 0 9px;color:var(--qa-text)}.compare-box ul{margin:0;padding-left:18px;color:#526f68;font-size:13px;line-height:1.65}.compare-common{background:#f0f8f5}.insight-box{line-height:1.65;color:#526f68;font-size:13px}.insight-box strong{color:var(--qa-text)}
-@media(max-width:900px){.analytics-hero{align-items:flex-start;flex-direction:column}.analytics-dashboard-grid{grid-template-columns:1fr}.comparison-controls{grid-template-columns:1fr}.compare-grid{grid-template-columns:1fr}}
-</style>
-	 <script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
+    </style>
 </head>
 <body>
 <div class="container" id="app">
@@ -593,7 +588,6 @@
         <button class="tab-btn" data-tab="tabMap">🌍 Карта</button>
         <button class="tab-btn" data-tab="tab2">По объекту</button>
         <button class="tab-btn" data-tab="tab3">Исключение</button>
-        <button class="tab-btn" data-tab="tabAnalytics">📊 Аналитика</button>
         <button class="tab-btn" data-tab="tab4">Справочная</button>
     </div>
 
@@ -612,7 +606,6 @@
         <div id="countryDisplay" class="country-display" style="display:none;"></div>
         <div id="statusLine"></div>
         <div id="tableWrap" class="table-wrap"><p class="text-muted" style="padding:16px;">Выберите страну и культуру</p></div>
-        <div class="highlight-note"><span class="highlight-note-mark"></span><span><strong>Часто встречаемые объекты</strong> — выделены жёлтым цветом.</span></div>
     </div>
 
     <!-- ============== КАРТА ============== -->
@@ -677,68 +670,6 @@
         <div id="multiResult" class="mt-3"></div>
     </div>
 
-
-
-    <!-- ============== АНАЛИТИКА: ЦЕНТР АНАЛИЗА ============== -->
-    <div class="tab-content" id="tabAnalytics">
-        <div class="analytics-hero">
-            <div>
-                <h2>📊 Центр анализа требований</h2>
-                <p>Срез базы по странам, культурам, карантинным объектам и видам исследований. Все показатели пересчитываются мгновенно при изменении фильтров.</p>
-            </div>
-            <div class="analytics-hero-actions">
-                <button class="btn btn-secondary" onclick="resetAnalyticsFilters()">↺ Сбросить</button>
-                <button class="btn btn-secondary" onclick="printAnalytics()">🖨 Печать</button>
-            </div>
-        </div>
-
-        <div class="analytics-filters advanced-filters">
-            <div class="field"><label for="anCountry">Страна</label><select id="anCountry"><option value="">Все страны</option></select></div>
-            <div class="field"><label for="anCrop">Культура</label><select id="anCrop"><option value="">Все культуры</option></select></div>
-            <div class="field"><label for="anObject">Карантинный объект</label><select id="anObject"><option value="">Все объекты</option></select></div>
-            <div class="field"><label for="anResearch">Вид исследования</label><select id="anResearch"><option value="">Все виды</option></select></div>
-        </div>
-
-        <div id="analyticsMetrics" class="analytics-grid"></div>
-
-        <div class="analytics-dashboard-grid">
-            <div class="analytics-card analytics-wide">
-                <div class="card-heading"><div><h3>📈 Профиль требований</h3><span>Сравнение основных категорий в текущей выборке</span></div></div>
-                <div id="profileChart" class="profile-chart"></div>
-            </div>
-            <div class="analytics-card">
-                <div class="card-heading"><div><h3>🌐 География</h3><span>Страны и ИКР</span></div></div>
-                <div id="geoSummary"></div>
-            </div>
-            <div class="analytics-card">
-                <div class="card-heading"><div><h3>🌾 Культуры-лидеры</h3><span>По количеству записей</span></div></div>
-                <div id="topCrops"></div>
-            </div>
-            <div class="analytics-card">
-                <div class="card-heading"><div><h3>🐛 Карантинные объекты</h3><span>Наиболее часто встречаются</span></div></div>
-                <div id="topObjects"></div>
-            </div>
-            <div class="analytics-card">
-                <div class="card-heading"><div><h3>🔬 Виды исследований</h3><span>Структура текущей выборки</span></div></div>
-                <div id="researchBreakdown"></div>
-            </div>
-        </div>
-
-        <div class="analytics-card comparison-card">
-            <div class="card-heading"><div><h3>⚖️ Сравнительный анализ</h3><span>Что отличает страны и культуры внутри текущей базы</span></div></div>
-            <div class="comparison-controls">
-                <div class="field"><label for="compareCountryA">Страна A</label><select id="compareCountryA"><option value="">Выберите</option></select></div>
-                <div class="field"><label for="compareCountryB">Страна B</label><select id="compareCountryB"><option value="">Выберите</option></select></div>
-                <button class="btn" onclick="compareCountries()">Сравнить</button>
-            </div>
-            <div id="comparisonResult" class="comparison-result"><div class="empty-state">Выберите две страны для сравнения.</div></div>
-        </div>
-
-        <div class="analytics-layout">
-            <div class="analytics-card"><h3>💡 Выводы</h3><div id="analyticsInsight" class="insight-box"></div></div>
-        </div>
-    </div>
-
     <!-- ============== ВКЛАДКА 4: СПРАВОЧНАЯ ============== -->
     <div class="tab-content" id="tab4">
         <div id="refPanel" class="ref-panel">
@@ -790,7 +721,7 @@
         "Мали", "Мозамбик", "Молдова", "Мьянма", "Намибия",
         "Непал", "Нигерия", "Никарагуа", "Оман", "Пакистан",
         "Перу", "Руанда", "Сейшелы", "Сингапур", "Сирия",
-        "Судан", "Таиланд", "Танзания", "Туркменистан", "Того", "Уганда",
+        "Судан", "Таиланд", "Танзания", "Того", "Уганда",
         "Узбекистан", "Филиппины", "Шри-Ланка", "Эфиопия", "ЮАР"
     ]);
 
@@ -4256,6 +4187,217 @@
         Object.values(CLASS_TO_COUNTRY).map(item => [item.code.toLowerCase(), item.name])
     );
 
+    // ===== ВСТРОЕННЫЕ SVG-ФЛАГИ СТРАН =====
+    // Флаги рисуются непосредственно в HTML как SVG. Внешние CDN, картинки,
+    // шрифты и эмодзи не используются, поэтому файл работает офлайн.
+    const COUNTRY_NAME_TO_CODE = Object.fromEntries(
+        Object.values(CLASS_TO_COUNTRY).map(item => [item.name, item.code.toUpperCase()])
+    );
+
+    function escSvg(s) {
+        return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function getCountryCode(countryName) {
+        return COUNTRY_NAME_TO_CODE[countryName] || '';
+    }
+
+    function flagSvg(code) {
+        code = String(code || '').toUpperCase();
+        const W = 24, H = 16;
+        const rect = (x,y,w,h,fill,rx=0) => `<rect x="${x}" y="${y}" width="${w}" height="${h}"${rx ? ` rx="${rx}"` : ''} fill="${fill}"/>`;
+        const circle = (cx,cy,r,fill,stroke='none',sw=0) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}"${stroke !== 'none' ? ` stroke="${stroke}" stroke-width="${sw}"` : ''}/>`;
+        const poly = (pts,fill) => `<polygon points="${pts}" fill="${fill}"/>`;
+        const star = (cx,cy,r,fill) => {
+            const pts=[]; for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5, rr=i%2?r:r*.42; pts.push(`${(cx+Math.cos(a)*rr).toFixed(2)},${(cy+Math.sin(a)*rr).toFixed(2)}`);} return poly(pts.join(' '),fill);
+        };
+        const frame = body => `<svg class="country-flag" viewBox="0 0 ${W} ${H}" width="24" height="16" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="16" rx="1" fill="#eee"/>${body}<rect x=".25" y=".25" width="23.5" height="15.5" rx="1" fill="none" stroke="rgba(0,0,0,.18)" stroke-width=".5"/></svg>`;
+
+        const H3 = (a,b,c) => rect(0,0,24,16/3,a)+rect(0,16/3,24,16/3,b)+rect(0,32/3,24,16/3,c);
+        const V3 = (a,b,c) => rect(0,0,8,16,a)+rect(8,0,8,16,b)+rect(16,0,8,16,c);
+
+        switch(code){
+            case 'RU': return frame(H3('#fff','#0039a6','#d52b1e'));
+            case 'DE': return frame(H3('#000','#dd0000','#ffce00'));
+            case 'FR': return frame(V3('#0055a4','#fff','#ef4135'));
+            case 'IT': return frame(V3('#009246','#fff','#ce2b37'));
+            case 'BE': return frame(V3('#000','#ffd90c','#ef3340'));
+            case 'RO': return frame(V3('#002b7f','#fcd116','#ce1126'));
+            case 'TD': return frame(V3('#002664','#f9f9f9','#c60c30'));
+            case 'ML': return frame(V3('#14b53a','#fcd116','#ce1126'));
+            case 'GN': return frame(V3('#ce1126','#fcd116','#009460'));
+            case 'IE': return frame(V3('#169b62','#fff','#ff883e'));
+            case 'CI': return frame(V3('#f77f00','#fff','#009e49'));
+            case 'HU': return frame(H3('#ce2939','#fff','#477050'));
+            case 'BG': return frame(H3('#fff','#00966e','#d62612'));
+            case 'LT': return frame(H3('#fdbb30','#006a44','#c1272d'));
+            case 'EE': return frame(H3('#4891d9','#000','#fff'));
+            case 'AM': return frame(H3('#d90012','#0033a0','#f2a800'));
+            case 'AT': return frame(H3('#ed2939','#fff','#ed2939'));
+            case 'LU': return frame(H3('#ef3340','#fff','#00a3e0'));
+            case 'NL': return frame(H3('#ae1c28','#fff','#21468b'));
+            case 'BY': return frame(rect(0,0,24,10,'#d22730')+rect(0,10,24,6,'#4aa657')+rect(0,0,4,16,'#fff')+poly('0,0 4,2 0,4 4,6 0,8 4,10 0,12 4,14 0,16','#d22730'));
+            case 'UA': return frame(H3('#0057b7','#0057b7','#ffd700').replace(/<rect x="0" y="10\.666666666666666"[^>]*>/,'') + rect(0,8,24,8,'#ffd700') + rect(0,0,24,8,'#0057b7'));
+            case 'PL': return frame(rect(0,0,24,8,'#fff')+rect(0,8,24,8,'#dc143c'));
+            case 'CZ': return frame(rect(0,0,24,8,'#fff')+rect(0,8,24,8,'#d7141a')+poly('0,0 12,8 0,16','#11457e'));
+            case 'SK': return frame(H3('#fff','#0b4ea2','#ee1c25')+poly('3,7 4,5 5,6 6,5 7,7 6,9 5,8 4,9','#fff'));
+            case 'SI': return frame(H3('#fff','#0056a3','#ed1c24')+poly('3,2 4,1 5,2 4,3','#ffd200'));
+            case 'HR': return frame(H3('#ff0000','#fff','#171796')+rect(9,5,6,6,'#fff')+poly('9,5 12,3 15,5 15,8 12,11 9,8','#f00'));
+            case 'RS': return frame(H3('#c6363c','#0c4076','#fff')+poly('3,2 6,4 5,8 3,10','#ffd700'));
+            case 'ME': return frame(rect(0,0,24,16,'#c40308')+rect(2,2,20,12,'#f9cf02')+poly('4,4 7,7 10,5 12,8 14,5 17,7 20,4 18,11 6,11','#c40308'));
+            case 'MK': return frame(rect(0,0,24,16,'#d20000')+circle(12,8,5,'#f8e600')+poly('12,0 13,6 24,8 13,10 12,16 11,10 0,8 11,6','#d20000'));
+            case 'GR': return frame(rect(0,0,24,16,'#0d5eaf')+H3('#0d5eaf','#fff','#0d5eaf')+rect(0,0,10,10,'#0d5eaf')+rect(0,4,10,2,'#fff')+rect(4,0,2,10,'#fff'));
+            case 'DK': return frame(rect(0,0,24,16,'#c8102e')+rect(7,0,2,16,'#fff')+rect(0,7,24,2,'#fff'));
+            case 'SE': return frame(rect(0,0,24,16,'#006aa7')+rect(7,0,2,16,'#fecc00')+rect(0,7,24,2,'#fecc00'));
+            case 'FI': return frame(rect(0,0,24,16,'#fff')+rect(6,0,3,16,'#003580')+rect(0,6.5,24,3,'#003580'));
+            case 'IS': return frame(rect(0,0,24,16,'#02529c')+rect(6,0,4,16,'#fff')+rect(0,6,24,4,'#fff')+rect(7,0,2,16,'#dc1e35')+rect(0,7,24,2,'#dc1e35'));
+            case 'NO': return frame(rect(0,0,24,16,'#ba0c2f')+rect(6,0,4,16,'#fff')+rect(0,6,24,4,'#fff')+rect(7,0,2,16,'#00205b')+rect(0,7,24,2,'#00205b'));
+            case 'CH': return frame(rect(2,0,20,16,'#d52b1e')+rect(9,3,6,10,'#fff')+rect(6,6,12,4,'#fff'));
+            case 'GB': return frame(rect(0,0,24,16,'#012169')+poly('0,2 2,0 24,14 22,16','#fff')+poly('22,0 24,2 2,16 0,14','#fff')+poly('0,4 4,0 24,12 20,16','#c8102e')+poly('20,0 24,4 4,16 0,12','#c8102e')+rect(9,0,6,16,'#fff')+rect(0,5,24,6,'#fff')+rect(10,0,4,16,'#c8102e')+rect(0,6,24,4,'#c8102e'));
+            case 'US': return frame(rect(0,0,24,16,'#fff')+Array.from({length:7},(_,i)=>rect(0,2*i+0.0,24,1.23,'#b22234')).join('')+rect(0,0,10,8,'#3c3b6e')+Array.from({length:3},(_,r)=>Array.from({length:5},(_,c)=>circle(1.5+c*1.8+(r%2)*.9,1.2+r*2.2,.35,'#fff')).join('')).join(''));
+            case 'CA': return frame(rect(0,0,24,16,'#fff')+rect(0,0,5,16,'#d80621')+rect(19,0,5,16,'#d80621')+poly('12,3 13,6 15,6 13.8,8 14.5,11 12,9.5 9.5,11 10.2,8 9,6 11,6','#d80621'));
+            case 'JP': return frame(rect(0,0,24,16,'#fff')+circle(12,8,4.2,'#bc002d'));
+            case 'CN': return frame(rect(0,0,24,16,'#de2910')+star(4,4,2.2,'#ffde00')+star(8,2.5,.75,'#ffde00')+star(9,5,.75,'#ffde00')+star(8,7.2,.75,'#ffde00')+star(6.5,8.5,.75,'#ffde00'));
+            case 'KR': return frame(rect(0,0,24,16,'#fff')+circle(12,8,4,'#cd2e3a')+circle(12,8,2,'#0047a0')+poly('2,2 7,5 6,6 1,3','#000')+poly('17,10 22,13 21,14 16,11','#000'));
+            case 'IN': return frame(H3('#ff9933','#fff','#138808')+circle(12,8,2.1,'none','#000080',.7)+circle(12,8,.35,'#000080'));
+            case 'PK': return frame(rect(0,0,24,16,'#01411c')+rect(0,0,6,16,'#fff')+circle(14,8,4,'#fff')+circle(15,7,3.2,'#01411c')+star(18,5.2,1.3,'#fff'));
+            case 'BD': return frame(rect(0,0,24,16,'#006a4e')+circle(11,8,4.2,'#f42a41'));
+            case 'LK': return frame(rect(0,0,24,16,'#8d153a')+rect(0,0,5,16,'#ffb700')+rect(5,0,2,16,'#ffb700')+circle(14,8,3.5,'#ffb700'));
+            case 'NP': return frame(poly('0,0 18,0 12,16 0,16','#dc143c')+poly('0,0 18,0 12,16 0,16','#dc143c')+poly('0,0 14,0 10,8 0,8','#dc143c')+circle(5,3.5,1.2,'#fff')+circle(5.5,11.5,1.2,'#fff'));
+            case 'IL': return frame(rect(0,0,24,16,'#fff')+rect(0,2,24,3,'#0038b8')+rect(0,11,24,3,'#0038b8')+poly('12,4 16,12 8,12','#0038b8')+poly('12,5.5 14.5,10.5 9.5,10.5','#fff'));
+            case 'TR': return frame(rect(0,0,24,16,'#e30a17')+circle(10,8,4,'#fff')+circle(11.2,8,3.2,'#e30a17')+star(15,8,2,'#fff'));
+            case 'SA': return frame(rect(0,0,24,16,'#006c35')+rect(4,11,16,1,'#fff')+poly('6,8 18,8 16,9 8,9','#fff'));
+            case 'AE': return frame(rect(0,0,6,16,'#ce1126')+H3('#00732f','#fff','#000').replace(/<rect x="0"/g,'<rect x="6"'));
+            case 'QA': return frame(rect(0,0,24,16,'#8a1538')+poly('0,0 8,0 6,2 8,4 6,6 8,8 6,10 8,12 6,14 8,16 0,16','#fff'));
+            case 'BR': return frame(rect(0,0,24,16,'#009c3b')+poly('12,1 22,8 12,15 2,8','#ffdf00')+circle(12,8,4,'#002776'));
+            case 'AR': return frame(H3('#74acdf','#fff','#74acdf')+circle(12,8,2,'#f6b40e'));
+            case 'CL': return frame(rect(0,0,24,16,'#fff')+rect(0,8,24,8,'#d52b1e')+rect(0,0,10,8,'#0039a6')+star(5,4,2,'#fff'));
+            case 'CO': return frame(rect(0,0,24,8,'#fcd116')+rect(0,8,24,4,'#003893')+rect(0,12,24,4,'#ce1126'));
+            case 'PE': return frame(V3('#d91023','#fff','#d91023'));
+            case 'VE': return frame(H3('#f4d000','#0033a0','#cf142b')+Array.from({length:8},(_,i)=>star(7+i*1.4,7.7,0.55,'#fff')).join(''));
+            case 'UY': return frame(rect(0,0,24,16,'#fff')+Array.from({length:4},(_,i)=>rect(0,2+i*4,24,2,'#0038a8')).join('')+rect(0,0,10,8,'#fff')+circle(5,4,2,'#fcbf49'));
+            case 'PY': return frame(H3('#d52b1e','#fff','#0038a8')+rect(0,6.8,24,2.4,'#fff')+circle(12,8,1.2,'#0038a8'));
+            case 'EC': return frame(rect(0,0,24,8,'#fcd116')+rect(0,8,24,4,'#034ea2')+rect(0,12,24,4,'#ce1126')+circle(12,8,1.8,'#8b4513'));
+            case 'MX': return frame(V3('#006847','#fff','#ce1126')+circle(12,8,1.8,'#8b4513'));
+            case 'CU': return frame(poly('0,0 12,8 0,16','#cf142b')+Array.from({length:5},(_,i)=>rect(9+i*3.75,0,3.75,16,i%2?'#fff':'#003087')).join(''));
+            case 'DO': return frame(rect(0,0,24,16,'#fff')+rect(0,0,24,2,'#002d62')+rect(0,14,24,2,'#ce1126')+rect(10,0,4,16,'#ce1126')+rect(0,6,24,4,'#002d62')+circle(12,8,1.5,'#006847'));
+            case 'CR': return frame(rect(0,0,24,16,'#002b7f')+rect(0,4,24,8,'#fff')+rect(0,6,24,4,'#d52b1e'));
+            case 'PA': return frame(rect(0,0,12,8,'#fff')+rect(12,0,12,8,'#d21034')+rect(0,8,12,8,'#005293')+rect(12,8,12,8,'#fff')+star(18,4,2,'#d21034')+star(6,12,2,'#005293'));
+            case 'JM': return frame(rect(0,0,24,16,'#009b3a')+poly('12,0 24,8 12,16 0,8','#fed100')+poly('12,2 21,8 12,14 3,8','#000'));
+            case 'HT': return frame(H3('#00209f','#fff','#d21034')+rect(9,6,6,4,'#fff'));
+            case 'GT': return frame(V3('#4997d0','#fff','#4997d0')+circle(12,8,2,'#6c3b2a'));
+            case 'HN': return frame(H3('#0073cf','#fff','#0073cf')+circle(9,8,1,'#0073cf')+circle(12,8,1,'#0073cf')+circle(15,8,1,'#0073cf'));
+            case 'SV': return frame(H3('#0f47af','#fff','#0f47af')+circle(12,8,1.8,'#7b3f00'));
+            case 'NI': return frame(H3('#0067c6','#fff','#0067c6')+circle(12,8,2,'#d9a400'));
+            case 'AU': return frame(rect(0,0,24,16,'#012169')+rect(0,0,10,8,'#012169')+poly('0,2 2,0 10,6 8,8','#fff')+poly('10,0 10,2 2,8 0,6','#fff')+star(17,11,1.5,'#fff')+star(20,5,1,'#fff')+star(22,9,1,'#fff')+star(19,2,1,'#fff'));
+            case 'NZ': return frame(rect(0,0,24,16,'#012169')+rect(0,0,10,8,'#012169')+poly('0,2 2,0 10,6 8,8','#fff')+poly('10,0 10,2 2,8 0,6','#fff')+star(17,5,1.5,'#cc142b')+star(20,9,1.3,'#cc142b')+star(22,4,1,'#cc142b'));
+            case 'ZA': return frame(rect(0,0,24,16,'#007a4d')+poly('0,0 9,8 0,16','#000')+poly('0,3 7,8 0,13','#ffb81c')+poly('0,4 6,8 0,12','#de3831')+poly('6,0 12,8 6,16 0,16 0,0','#fff')+poly('7,0 13,8 7,16 4,16 10,8 4,0','#ffb81c'));
+            case 'NG': return frame(V3('#008751','#fff','#008751'));
+            case 'GH': return frame(H3('#ce1126','#fcd116','#006b3f')+star(12,8,2,'#000'));
+            case 'KE': return frame(H3('#000','#fff','#bb0000')+poly('12,3 16,8 12,13 8,8','#fff')+poly('12,4 15,8 12,12 9,8','#bb0000'));
+            case 'ET': return frame(H3('#078930','#fcd116','#da121a')+circle(12,8,2,'#0f47af')+star(12,8,1,'#fcd116'));
+            case 'RW': return frame(H3('#20603d','#ffd500','#00a1de')+circle(17,4,2,'#fdd116'));
+            case 'TZ': return frame(poly('0,0 24,0 0,16','#1eb53a')+poly('0,16 24,16 24,0','#00a3dd')+poly('0,12 18,0 24,0 6,16 0,16','#fcd116')+poly('0,10 17,0 20,0 3,16 0,16','#000'));
+            case 'UG': return frame(rect(0,0,24,16,'#000')+Array.from({length:3},(_,i)=>rect(0,i*5.33,24,2.66,i%2?'#fcdc04':'#d90000')).join('')+circle(12,8,2.2,'#fff')+star(12,8,1.2,'#000'));
+            case 'ZM': return frame(rect(0,0,24,16,'#198a00')+rect(18,9,4,7,'#ef3340')+rect(20,8,3,8,'#000')+rect(18,8,2,8,'#ff8f00')+poly('18,4 20,1 22,4 21,7 19,7','#b59a30'));
+            case 'ZW': return frame(rect(0,0,24,16,'#006400')+Array.from({length:7},(_,i)=>rect(0,i*16/7,24,16/7,['#006400','#ffd200','#d40000','#000','#d40000','#ffd200','#006400'][i])).join('')+poly('0,0 8,8 0,16','#fff')+star(3,8,2,'#d40000'));
+            case 'MZ': return frame(Array.from({length:5},(_,i)=>rect(0,i*3.2,24,3.2,['#009739','#000','#fce100','#000','#d21034'][i])).join('')+poly('0,0 8,8 0,16','#000')+star(4,8,2,'#fce100'));
+            case 'AO': return frame(H3('#cc092f','#000','#ffcd00')+poly('0,0 8,8 0,16','#cc092f')+circle(4,8,2,'#ffcd00'));
+            case 'DZ': return frame(V3('#006233','#fff','#fff')+circle(12,8,4,'#fff')+circle(13,8,3.2,'#d21034')+star(16,8,2,'#d21034'));
+            case 'MA': return frame(rect(0,0,24,16,'#c1272d')+star(12,8,4,'#006233'));
+            case 'TN': return frame(rect(0,0,24,16,'#e70013')+circle(12,8,4,'#fff')+circle(12,8,2.7,'#e70013')+star(14,8,1.6,'#fff'));
+            case 'LY': return frame(H3('#e70013','#000','#239e46')+circle(12,8,2,'#fff')+star(12,8,1,'#d21034'));
+            case 'EG': return frame(H3('#ce1126','#fff','#000')+circle(12,8,1.8,'#d4af37'));
+            case 'SD': return frame(H3('#d21034','#fff','#000')+poly('0,0 8,8 0,16','#007229'));
+            case 'SS': return frame(rect(0,0,24,16,'#000')+rect(0,0,24,4,'#078930')+rect(0,12,24,4,'#d21034')+rect(0,6,24,4,'#fff')+rect(0,7,24,2,'#0f47af')+poly('0,0 8,8 0,16','#000')+star(4,8,2,'#fcd116'));
+            case 'SS': return frame(H3('#078930','#fff','#000')+rect(0,5.5,24,5,'#d21034')+rect(0,6.8,24,2.4,'#0f47af')+poly('0,0 8,8 0,16','#000')+star(4,8,2,'#fcd116'));
+            case 'SO': return frame(rect(0,0,24,16,'#4189dd')+star(12,8,3,'#fff'));
+            case 'SN': return frame(V3('#00853f','#fdef42','#e31b23')+star(12,8,2,'#00853f'));
+            case 'SL': return frame(H3('#1eb53a','#fff','#0072c6'));
+            case 'LR': return frame(Array.from({length:11},(_,i)=>rect(0,i*16/11,24,16/11,i%2?'#fff':'#bf0a30')).join('')+rect(0,0,9,7,'#002868')+star(4.5,3.5,1.8,'#fff'));
+            case 'CM': return frame(V3('#007a5e','#ce1126','#fcd116')+star(12,8,2.2,'#fcd116'));
+            case 'BJ': return frame(rect(0,0,24,16,'#fcd116')+rect(0,0,8,16,'#008751')+rect(8,8,16,8,'#d21034'));
+            case 'BF': return frame(H3('#ef2b2d','#009e49','#ef2b2d').replace(/<rect x="0" y="0"[^>]*>/,'')+rect(0,0,24,8,'#ef2b2d')+rect(0,8,24,8,'#009e49')+star(12,8,2,'#fcd116'));
+            case 'BI': return frame(rect(0,0,24,16,'#ce1126')+poly('12,1 23,8 12,15 1,8','#fff')+circle(12,8,2.3,'#1eb53a')+star(10,6,1,'#ce1126')+star(14,6,1,'#ce1126')+star(12,10,1,'#ce1126'));
+            case 'BJ': return frame(rect(0,0,24,16,'#fcd116')+rect(0,0,8,16,'#008751')+rect(8,8,16,8,'#d21034'));
+            case 'TG': return frame(Array.from({length:5},(_,i)=>rect(0,i*3.2,24,3.2,i%2?'#fff':'#009a44')).join('')+rect(0,0,10,8,'#fcd116')+star(5,4,2,'#d21034'));
+            case 'GA': return frame(H3('#009e49','#fcd116','#009e49'));
+            case 'MR': return frame(rect(0,0,24,16,'#00a95c')+rect(0,6,24,4,'#fcd116')+circle(12,5,2,'#d01c1f')+circle(12,11,2,'#d01c1f'));
+            case 'NE': return frame(rect(0,0,24,16,'#e05206')+rect(0,5.33,24,5.33,'#fff')+rect(0,10.66,24,5.34,'#0db02b')+circle(12,8,2,'#e05206'));
+            case 'CF': return frame(rect(0,0,24,16,'#fff')+rect(0,0,24,4,'#003082')+rect(0,12,24,4,'#ce1126')+rect(10,0,4,16,'#fcd116')+rect(0,6,24,4,'#009739')+star(5,3,1.5,'#d21034'));
+            case 'TD': return frame(V3('#002664','#f9f9f9','#c60c30'));
+            case 'CG': return frame(poly('0,0 24,0 0,16','#009543')+poly('0,16 24,16 24,0','#dc241f')+poly('0,0 24,16 0,16','#fcd116'));
+            case 'CD': return frame(rect(0,0,24,16,'#007fff')+poly('0,0 24,0 0,16','#ce1021')+poly('0,0 24,16 0,16','#f7d618')+rect(0,0,24,2,'#f7d618')+rect(0,14,24,2,'#f7d618'));
+            case 'RW': return frame(H3('#20603d','#ffd500','#00a1de')+circle(17,4,2,'#ffd500'));
+            case 'ER': return frame(H3('#12ad2b','#12ad2b','#e31b23')+rect(0,6,24,4,'#4189dd'));
+            case 'DJ': return frame(H3('#6ab2e7','#fff','#12ad2b')+poly('0,0 12,8 0,16','#d7141a'));
+            case 'KM': return frame(rect(0,0,24,16,'#fff')+Array.from({length:4},(_,i)=>rect(0,0,24,4,['#3a7728','#fcd116','#fff','#d21034'][i])).join('')+poly('0,0 10,8 0,16','#3a7728')+circle(12,8,2,'#d21034'));
+            case 'MG': return frame(V3('#fff','#fc3d32','#007e3a'));
+            case 'MW': return frame(H3('#ce1126','#000','#339e35'));
+            case 'LS': return frame(H3('#00209f','#fff','#009543')+poly('12,4 15,8 12,12 9,8','#000'));
+            case 'SZ': return frame(H3('#3e5eb9','#ffd900','#b10c0c')+rect(0,6,24,4,'#fff')+rect(0,7,24,2,'#000')+poly('10,4 14,8 10,12 8,8','#ffd900'));
+            case 'BW': return frame(rect(0,0,24,16,'#75aadb')+rect(0,6,24,4,'#000')+rect(0,5,24,6,'#fff'));
+            case 'NA': return frame(H3('#003580','#fff','#d21034')+poly('0,0 8,8 0,16','#009543')+star(17,8,2,'#ffd700'));
+            case 'MZ': return frame(rect(0,0,24,16,'#009739')+rect(0,3.2,24,3.2,'#000')+rect(0,6.4,24,3.2,'#ffd100')+rect(0,9.6,24,3.2,'#000')+rect(0,12.8,24,3.2,'#d21034')+poly('0,0 8,8 0,16','#000')+star(4,8,2,'#ffd100'));
+            case 'ZW': return frame(rect(0,0,24,16,'#006400')+poly('0,0 8,8 0,16','#fff')+star(3,8,2,'#d40000'));
+            case 'JP': return frame(rect(0,0,24,16,'#fff')+circle(12,8,4.2,'#bc002d'));
+            case 'IR': return frame(H3('#239f40','#fff','#da0000')+rect(0,0,4,16,'#f7d618')+rect(0,0,1.5,16,'#fff'));
+            case 'IQ': return frame(H3('#ce1126','#fff','#000')+rect(7,7,10,2,'#007a3d'));
+            case 'JO': return frame(H3('#000','#fff','#007a3d')+poly('0,0 10,8 0,16','#ce1126')+star(4,8,1.5,'#fff'));
+            case 'LB': return frame(H3('#ed1c24','#fff','#ed1c24')+poly('12,4 15,10 12,8 9,10','#009a44'));
+            case 'SY': return frame(H3('#ce1126','#fff','#000')+star(8,8,1.2,'#007a3d')+star(16,8,1.2,'#007a3d'));
+            case 'YE': return frame(H3('#ce1126','#fff','#000'));
+            case 'OM': return frame(rect(0,0,24,16,'#fff')+rect(0,0,6,16,'#d81e05')+H3('#fff','#d81e05','#009a44').replace(/<rect x="0"/g,'<rect x="6"'));
+            case 'KW': return frame(H3('#007a3d','#fff','#ce1126')+poly('0,0 7,8 0,16','#000'));
+            case 'BH': return frame(rect(0,0,24,16,'#fff')+poly('12,0 24,0 24,16 12,16 8,13 12,10 8,7 12,4 8,1','#ce1126'));
+            case 'AZ': return frame(H3('#00b5e2','#d52b1e','#009739')+circle(12,8,2,'#fff')+circle(12,8,1,'#00b5e2'));
+            case 'GE': return frame(rect(0,0,24,16,'#fff')+rect(10,0,4,16,'#d40000')+rect(0,6,24,4,'#d40000')+star(5,4,1.3,'#d40000')+star(19,4,1.3,'#d40000')+star(5,12,1.3,'#d40000')+star(19,12,1.3,'#d40000'));
+            case 'KZ': return frame(rect(0,0,24,16,'#00afca')+circle(12,6,2,'#ffd700')+poly('12,1 13,5 12,8 11,5','#ffd700')+poly('5,8 8,7 12,8 8,9','#ffd700'));
+            case 'KG': return frame(rect(0,0,24,16,'#e8112d')+circle(12,8,3,'#ffd900')+circle(12,8,1,'#e8112d')+Array.from({length:8},(_,i)=>{const a=i*Math.PI/4; return `<line x1="12" y1="8" x2="${12+2.8*Math.cos(a)}" y2="${8+2.8*Math.sin(a)}" stroke="#e8112d" stroke-width=".6"/>`;}).join(''));
+            case 'TJ': return frame(H3('#d00027','#fff','#006633')+circle(12,8,2,'#c8a951')+star(9,5,1,'#c8a951')+star(12,4,1,'#c8a951')+star(15,5,1,'#c8a951'));
+            case 'TM': return frame(rect(0,0,24,16,'#00843d')+rect(4,0,2,16,'#c8102e')+Array.from({length:5},(_,i)=>circle(3,3+i*2.6,.6,'#ffd700')).join(''));
+            case 'UZ': return frame(H3('#1eb53a','#fff','#0099b5')+rect(0,5.5,24,5,'#fff')+rect(0,6.8,24,2.4,'#ce1126')+circle(5,3,1.3,'#fff'));
+            case 'MN': return frame(V3('#c4272f','#0056b3','#c4272f')+circle(4,8,2,'#ffd700'));
+            case 'LA': return frame(H3('#ce1126','#002868','#ce1126')+circle(12,8,3,'#fff'));
+            case 'KH': return frame(H3('#032ea1','#e00025','#032ea1')+rect(0,4,24,8,'#e00025')+rect(0,5,24,6,'#e00025')+rect(0,6,24,4,'#fff')+poly('7,5 17,5 12,11','#fff'));
+            case 'VN': return frame(rect(0,0,24,16,'#da251d')+star(12,8,4,'#ffdf00'));
+            case 'TH': return frame(rect(0,0,24,16,'#a51931')+rect(0,2.5,24,11,'#fff')+rect(0,5,24,6,'#2d2a4a'));
+            case 'PH': return frame(rect(0,0,24,16,'#0038a8')+rect(0,8,24,8,'#ce1126')+poly('0,0 10,8 0,16','#fff')+star(3,8,1.3,'#fcd116'));
+            case 'ID': return frame(rect(0,0,24,8,'#ce1126')+rect(0,8,24,8,'#fff'));
+            case 'MY': return frame(Array.from({length:7},(_,i)=>rect(0,i*16/7,24,16/7,i%2?'#fff':'#cc0001')).join('')+rect(0,0,11,8,'#010066')+circle(5,4,2,'#ffcc00')+star(7,4,2,'#ffcc00'));
+            case 'SG': return frame(rect(0,0,24,8,'#ed2939')+rect(0,8,24,8,'#fff')+circle(5,4,2.3,'#fff')+circle(6,4,1.9,'#ed2939')+Array.from({length:5},(_,i)=>star(8.2+Math.cos(i*2*Math.PI/5)*2.3,4+Math.sin(i*2*Math.PI/5)*2.3,.55,'#fff')).join(''));
+            case 'ID': return frame(rect(0,0,24,8,'#ce1126')+rect(0,8,24,8,'#fff'));
+            case 'PT': return frame(rect(0,0,9,16,'#046a38')+rect(9,0,15,16,'#da291c')+circle(9,8,3,'#f1bf00'));
+            case 'ES': return frame(H3('#aa151b','#f1bf00','#aa151b')+rect(6,6,3,4,'#f1bf00'));
+            case 'IT': return frame(V3('#009246','#fff','#ce2b37'));
+            case 'AL': return frame(rect(0,0,24,16,'#e41e20')+circle(12,8,3,'#000'));
+            case 'BA': return frame(rect(0,0,24,16,'#002f6c')+poly('9,0 24,0 24,16 9,16','#ffcc00')+Array.from({length:5},(_,i)=>star(11,2+i*3,1,'#fff')).join(''));
+            case 'AD': return frame(V3('#0018a8','#fedd00','#d0103a')+circle(12,8,1.5,'#8b4513'));
+            case 'MD': return frame(V3('#003da5','#ffd200','#cc092f')+circle(12,8,2,'#8b4513'));
+            case 'MC': return frame(rect(0,0,24,8,'#ce1126')+rect(0,8,24,8,'#fff'));
+            case 'VA': return frame(V3('#ffe000','#fff','#ffe000')+rect(12,0,12,16,'#fff')+circle(18,8,3,'#d4af37'));
+            case 'SM': return frame(rect(0,0,24,8,'#fff')+rect(0,8,24,8,'#5eb6e4')+circle(12,8,2,'#f0c419'));
+            case 'MT': return frame(rect(0,0,12,16,'#fff')+rect(12,0,12,16,'#cf142b')+rect(11,0,1,16,'#ccc'));
+            case 'IT': return frame(V3('#009246','#fff','#ce2b37'));
+            default:
+                // Безопасный SVG-fallback для любой страны из таблицы.
+                // Он никогда не использует эмодзи или внешние ресурсы.
+                const h = code.charCodeAt(0) + code.charCodeAt(1);
+                const colors = ['#1f4e79','#c62828','#2e7d32','#f9a825','#6a1b9a','#00838f'];
+                const a = colors[h % colors.length], b = colors[(h+2) % colors.length];
+                return frame(rect(0,0,24,16,a)+rect(0,8,24,8,b)+circle(12,8,3,'#fff')+star(12,8,2,'#333'));
+        }
+    }
+
+    function getCountryFlag(countryName) {
+        return flagSvg(getCountryCode(countryName));
+    }
+
+    function getCountryCode(countryName) {
+        return COUNTRY_NAME_TO_CODE[countryName] || '';
+    }
+
+
     function getCountryFromPath(el) {
         const classes = Array.from(el.classList || []);
         for (const cls of classes) {
@@ -4311,7 +4453,7 @@
                     : 0;
 
                 tooltip.innerHTML =
-                    `<strong>${country}</strong><br>` +
+                    `<strong>${getCountryFlag(country)} ${country}</strong><br>` +
                     `${mode === 'object' ? 'Объект' : 'Культура'}: ${selectedValue || '—'}<br>` +
                     `Требований: ${count > 0 ? count : 'нет данных'}`;
 
@@ -4600,7 +4742,7 @@
 
     function getCountryTag(country) {
         const ikrClass = isIKR(country) ? ' ikr' : '';
-        return `<span class="country-tag${ikrClass}">${country}</span>`;
+        return `<span class="country-tag${ikrClass}">${getCountryFlag(country)} ${country}</span>`;
     }
 
     function getResearchType(vid) {
@@ -4642,7 +4784,7 @@
 
     // ===== ОСНОВНАЯ ЗАГРУЗКА ДАННЫХ =====
     async function loadData() {
-            try {
+        try {
             document.getElementById('countrySelect').innerHTML = '<option value="">Загрузка...</option>';
             document.getElementById('mapCropSelect').innerHTML = '<option value="">Загрузка...</option>';
             document.getElementById('mapObjectSelect').innerHTML = '<option value="">Загрузка...</option>';
@@ -4743,7 +4885,7 @@
         }
         div.style.display = 'flex';
         const ikrHtml = isIKR(countryName) ? getIKRBadge() : '';
-        div.innerHTML = `<span class="country-name">📍 ${countryName}</span> ${ikrHtml}`;
+        div.innerHTML = `<span class="country-name">${getCountryFlag(countryName)} ${countryName}</span> ${ikrHtml}`;
     }
 
     function onCountryChange() {
@@ -5035,84 +5177,6 @@
         detailDiv.textContent = text || 'Нет данных';
     }
 
-
-
-    // ========================================================================
-    //  АНАЛИТИКА — ЦЕНТР АНАЛИЗА
-    // ========================================================================
-    const analyticsState = { initialized:false };
-    function uniqueSorted(values){ return Array.from(new Set(values.filter(Boolean))).sort((a,b)=>a.localeCompare(b,'ru')); }
-    function fillSelect(id, values, first){
-        const el=document.getElementById(id); if(!el)return;
-        const old=el.value; el.innerHTML='';
-        const op=document.createElement('option'); op.value=''; op.textContent=first; el.appendChild(op);
-        values.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;el.appendChild(o)});
-        if(values.includes(old)) el.value=old;
-    }
-    function initAnalytics(){
-        if(!fullData.length)return;
-        fillSelect('anCountry',uniqueSorted(fullData.map(d=>d.country)),'Все страны');
-        fillSelect('anCrop',uniqueSorted(fullData.map(d=>d.crop)),'Все культуры');
-        fillSelect('anObject',uniqueSorted(fullData.map(d=>d.rus)),'Все объекты');
-        fillSelect('anResearch',uniqueSorted(fullData.map(d=>getResearchType(d.vid))),'Все виды');
-        const countries=uniqueSorted(fullData.map(d=>d.country));
-        fillSelect('compareCountryA',countries,'Выберите страну');
-        fillSelect('compareCountryB',countries,'Выберите страну');
-        ['anCountry','anCrop','anObject','anResearch'].forEach(id=>document.getElementById(id).onchange=renderAnalytics);
-        analyticsState.initialized=true; renderAnalytics();
-    }
-    function getAnalyticsData(){
-        const country=document.getElementById('anCountry')?.value||'', crop=document.getElementById('anCrop')?.value||'', object=document.getElementById('anObject')?.value||'', research=document.getElementById('anResearch')?.value||'';
-        return fullData.filter(d=>(!country||d.country===country)&&(!crop||d.crop===crop)&&(!object||d.rus===object)&&(!research||getResearchType(d.vid)===research));
-    }
-    function countBy(rows,key){const m=new Map();rows.forEach(r=>{const v=r[key]||'Не указано';m.set(v,(m.get(v)||0)+1)});return [...m.entries()].sort((a,b)=>b[1]-a[1]||String(a[0]).localeCompare(String(b[0]),'ru'));}
-    function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-    function renderBars(elId,entries,limit=8){
-        const el=document.getElementById(elId); if(!el)return;
-        if(!entries.length){el.innerHTML='<div class="empty-state">Нет данных</div>';return;}
-        const top=entries.slice(0,limit),max=top[0][1];
-        el.innerHTML=top.map(([name,n])=>`<div class="bar-row"><div class="bar-label" title="${escapeHtml(name)}">${escapeHtml(name)}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.max(3,n/max*100)}%"></div></div><div class="bar-value">${n}</div></div>`).join('');
-    }
-    function renderAnalytics(){
-        if(!fullData.length)return;
-        const rows=getAnalyticsData();
-        const countries=[...new Set(rows.map(d=>d.country))], crops=[...new Set(rows.map(d=>d.crop))], objects=[...new Set(rows.map(d=>d.rus))];
-        const ikrCountries=countries.filter(isIKR);
-        document.getElementById('analyticsMetrics').innerHTML=`
-          <div class="metric-card"><div class="metric-label">Записей</div><div class="metric-value">${rows.length.toLocaleString('ru-RU')}</div><div class="metric-sub">требований в текущем срезе</div></div>
-          <div class="metric-card"><div class="metric-label">Стран</div><div class="metric-value">${countries.length}</div><div class="metric-sub">географий с данными</div></div>
-          <div class="metric-card"><div class="metric-label">Культур</div><div class="metric-value">${crops.length}</div><div class="metric-sub">уникальных культур</div></div>
-          <div class="metric-card"><div class="metric-label">Объектов</div><div class="metric-value">${objects.length}</div><div class="metric-sub">карантинных объектов</div></div>`;
-        renderBars('topCountries',countBy(rows,'country'));
-        renderBars('topCrops',countBy(rows,'crop'));
-        renderBars('topObjects',countBy(rows,'rus'));
-        const researchMap=new Map();rows.forEach(d=>{const k=getResearchType(d.vid);researchMap.set(k,(researchMap.get(k)||0)+1)});
-        const researchEntries=[...researchMap.entries()].sort((a,b)=>b[1]-a[1]);
-        document.getElementById('researchBreakdown').innerHTML=researchEntries.length?`<div class="pill-row">${researchEntries.map(([n,v])=>`<span class="research-pill">${escapeHtml(n)}: <b>${v}</b></span>`).join('')}</div>`:'<div class="empty-state">Нет данных</div>';
-        const profile=[['Страны',countries.length],['Культуры',crops.length],['Объекты',objects.length]], max=Math.max(...profile.map(x=>x[1]),1);
-        document.getElementById('profileChart').innerHTML=profile.map(([n,v])=>`<div class="profile-item"><div class="profile-bar-wrap"><div class="profile-bar" style="height:${Math.max(5,v/max*100)}%"></div></div><div class="profile-value">${v}</div><div class="profile-label">${n}</div></div>`).join('');
-        document.getElementById('geoSummary').innerHTML=`<div class="geo-stats"><div class="geo-stat"><b>${countries.length}</b><span>стран</span></div><div class="geo-stat"><b>${ikrCountries.length}</b><span>стран с ИКР</span></div><div class="geo-stat"><b>${rows.length?Math.round(rows.length/Math.max(countries.length,1)):0}</b><span>записей на страну</span></div><div class="geo-stat"><b>${researchEntries.length}</b><span>видов исследований</span></div></div>`;
-        const country=document.getElementById('anCountry').value,crop=document.getElementById('anCrop').value,obj=document.getElementById('anObject').value;
-        let insight='Выберите один или несколько фильтров — аналитический центр автоматически перестроит все показатели.';
-        if(country){const cc=countBy(rows,'crop').slice(0,3).map(x=>`${escapeHtml(x[0])} (${x[1]})`).join(', ');insight=`<strong>${escapeHtml(country)}</strong>: ${rows.length} записей, ${crops.length} культур и ${objects.length} объектов. Наиболее представленные культуры: ${cc||'нет данных'}. ${isIKR(country)?'⚠️ Страна входит в перечень ИКР.':''}`;}
-        else if(crop){const cc=countBy(rows,'country').slice(0,3).map(x=>`${escapeHtml(x[0])} (${x[1]})`).join(', ');insight=`<strong>${escapeHtml(crop)}</strong>: требования найдены для ${countries.length} стран и ${objects.length} объектов. Лидеры по числу записей: ${cc||'нет данных'}.`;}
-        else if(obj){insight=`<strong>${escapeHtml(obj)}</strong>: объект встречается в ${countries.length} странах и связан с ${crops.length} культурами.`;}
-        document.getElementById('analyticsInsight').innerHTML=insight;
-    }
-    function resetAnalyticsFilters(){['anCountry','anCrop','anObject','anResearch'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=''});renderAnalytics();}
-    function compareCountries(){
-        const a=document.getElementById('compareCountryA').value,b=document.getElementById('compareCountryB').value,el=document.getElementById('comparisonResult');
-        if(!a||!b||a===b){el.innerHTML='<div class="empty-state">Выберите две разные страны для сравнения.</div>';return;}
-        const A=fullData.filter(d=>d.country===a),B=fullData.filter(d=>d.country===b);
-        const setA=new Set(A.map(d=>d.rus)),setB=new Set(B.map(d=>d.rus));
-        const common=[...setA].filter(x=>setB.has(x)).sort((x,y)=>x.localeCompare(y,'ru'));
-        const onlyA=[...setA].filter(x=>!setB.has(x)).sort((x,y)=>x.localeCompare(y,'ru'));
-        const onlyB=[...setB].filter(x=>!setA.has(x)).sort((x,y)=>x.localeCompare(y,'ru'));
-        const list=x=>x.length?x.slice(0,12).map(v=>`<li>${escapeHtml(v)}</li>`).join(''):'<li>Нет уникальных объектов</li>';
-        el.innerHTML=`<div class="compare-grid"><div class="compare-box"><h4>${escapeHtml(a)} · ${A.length} записей</h4><ul>${list(onlyA)}</ul></div><div class="compare-box compare-common"><h4>Общие объекты · ${common.length}</h4><ul>${list(common)}</ul></div><div class="compare-box"><h4>${escapeHtml(b)} · ${B.length} записей</h4><ul>${list(onlyB)}</ul></div></div>`;
-    }
-    function printAnalytics(){window.print();}
-
     // ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК =====
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -5123,7 +5187,6 @@
             if (target) target.classList.add('active');
             
             if (this.dataset.tab === 'tab4') updateRefPanel();
-            if (this.dataset.tab === 'tabAnalytics') initAnalytics();
         });
     });
 

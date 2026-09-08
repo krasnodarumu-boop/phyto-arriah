@@ -79,6 +79,34 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
+
+        /* ===== Обновления РСХН по странам ===== */
+        .rshn-updates-hero {
+            display:flex; justify-content:space-between; align-items:center; gap:16px;
+            margin-bottom:16px; padding:18px 20px; border:1px solid #dbeae6;
+            border-radius:16px; background:linear-gradient(135deg,#f4fbf8,#ffffff);
+        }
+        .rshn-updates-hero h2 { margin:0 0 6px; font-size:clamp(19px,3vw,26px); color:#1e6b5e; }
+        .rshn-updates-hero p { margin:0; color:#5f7771; }
+        .rshn-updates-meta { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+        .rshn-meta-card { padding:10px 14px; border:1px solid #dbeae6; border-radius:12px; background:#fff; }
+        .rshn-meta-label { display:block; font-size:12px; color:#78908a; margin-bottom:3px; }
+        .rshn-meta-value { font-weight:700; color:#234f47; }
+        .rshn-updates-status { min-height:24px; margin:8px 0 10px; color:#607a73; }
+        .rshn-updates-table { width:100%; border-collapse:collapse; overflow:hidden; border:1px solid #dbeae6; border-radius:14px; background:#fff; }
+        .rshn-updates-table th, .rshn-updates-table td { padding:11px 14px; border-bottom:1px solid #e7efed; text-align:left; }
+        .rshn-updates-table th { background:#edf7f4; color:#245d52; font-weight:700; position:sticky; top:0; }
+        .rshn-updates-table tr:last-child td { border-bottom:none; }
+        .rshn-updates-table tbody tr:hover { background:#f7fbfa; }
+        .rshn-rank { width:58px; color:#78908a; text-align:center !important; }
+        .rshn-date { white-space:nowrap; font-weight:600; }
+        .rshn-fresh { color:#1e6b5e; }
+        .rshn-table-wrap { overflow:auto; border-radius:14px; }
+        @media (max-width:700px) {
+            .rshn-updates-hero { align-items:flex-start; flex-direction:column; }
+            .rshn-updates-table th, .rshn-updates-table td { padding:10px 9px; }
+        }
+
         .controls {
             display: flex;
             flex-wrap: wrap;
@@ -626,6 +654,7 @@
         <button class="tab-btn" data-tab="tab2">По объекту</button>
         <button class="tab-btn" data-tab="tab3">Исключение</button>
         <button class="tab-btn" data-tab="tabAnalytics">📊 Аналитика</button>
+        <button class="tab-btn" data-tab="tabRshnUpdates">🔄 Обновления РСХН по странам</button>
         <button class="tab-btn" data-tab="tab4">Справочная</button>
     </div>
 
@@ -771,6 +800,32 @@
         </div>
     </div>
 
+
+    <!-- ============== ОБНОВЛЕНИЯ РСХН ПО СТРАНАМ ============== -->
+    <div class="tab-content" id="tabRshnUpdates">
+        <div class="rshn-updates-hero">
+            <div>
+                <h2>🔄 Обновления РСХН по странам</h2>
+                <p>Страны отсортированы от самых свежих изменений к самым старым.</p>
+            </div>
+            <button class="btn btn-secondary" id="rshnRefreshBtn" type="button">↻ Обновить</button>
+        </div>
+        <div class="rshn-updates-meta">
+            <div class="rshn-meta-card">
+                <span class="rshn-meta-label">Дата парсинга</span>
+                <span class="rshn-meta-value" id="rshnParsingDate">—</span>
+            </div>
+            <div class="rshn-meta-card">
+                <span class="rshn-meta-label">Стран в списке</span>
+                <span class="rshn-meta-value" id="rshnCountryCount">—</span>
+            </div>
+        </div>
+        <div id="rshnUpdatesStatus" class="rshn-updates-status"></div>
+        <div id="rshnUpdatesTableWrap" class="rshn-table-wrap">
+            <p class="text-muted" style="padding:16px;">Загрузка данных РСХН…</p>
+        </div>
+    </div>
+
     <!-- ============== ВКЛАДКА 4: СПРАВОЧНАЯ ============== -->
     <div class="tab-content" id="tab4">
         <div id="refPanel" class="ref-panel">
@@ -846,6 +901,91 @@
     ]);
 
     const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ31_DOrIauOnjQcmFuct1-EK7McMn8buwyAn0f1fkXrc2-xViU5nXYeV-mt2XENEt0r-MMcKMzRFV/pub?gid=2058367012&single=true&output=csv';
+
+    // CSV вкладки data_izm_rshn: A — страна, C — дата последнего изменения, E1 — дата парсинга
+    const RSHN_UPDATES_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRQ31_DOrIauOnjQcmFuct1-EK7McMn8buwyAn0f1fkXrc2-xViU5nXYeV-mt2XENEt0r-MMcKMzRFV/pub?gid=1445841445&single=true&output=csv';
+
+    function parseRshnDate(value) {
+        const raw = String(value || '').trim();
+        if (!raw) return null;
+        const m = raw.match(/^(\d{1,2})[.\/\-](\d{1,2})[.\/\-](\d{4})(?:[ T](\d{1,2}):(\d{2})(?::(\d{2}))?)?/);
+        if (m) {
+            const d = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]), Number(m[4] || 0), Number(m[5] || 0), Number(m[6] || 0));
+            if (!Number.isNaN(d.getTime())) return d;
+        }
+        const iso = new Date(raw);
+        return Number.isNaN(iso.getTime()) ? null : iso;
+    }
+
+    function formatRshnDate(value) {
+        const raw = String(value || '').trim();
+        const d = parseRshnDate(raw);
+        if (!d) return raw || '—';
+        const dd = String(d.getDate()).padStart(2,'0');
+        const mm = String(d.getMonth()+1).padStart(2,'0');
+        const yyyy = d.getFullYear();
+        const hasTime = /[ T]\d{1,2}:\d{2}/.test(raw);
+        if (!hasTime) return `${dd}.${mm}.${yyyy}`;
+        return `${dd}.${mm}.${yyyy} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+    }
+
+    async function loadRshnUpdates() {
+        const wrap = document.getElementById('rshnUpdatesTableWrap');
+        const status = document.getElementById('rshnUpdatesStatus');
+        const parsingDateEl = document.getElementById('rshnParsingDate');
+        const countEl = document.getElementById('rshnCountryCount');
+        if (!wrap || !status) return;
+        status.textContent = 'Загрузка данных РСХН…';
+        try {
+            const separator = RSHN_UPDATES_CSV_URL.includes('?') ? '&' : '?';
+            const resp = await fetch(RSHN_UPDATES_CSV_URL + separator + '_=' + Date.now(), { cache: 'no-store' });
+            if (!resp.ok) throw new Error(`Ошибка HTTP: ${resp.status}`);
+            const rows = parseCSVFast(await resp.text());
+            if (!rows.length) throw new Error('Таблица РСХН пуста');
+
+            // E1 — дата парсинга (первая строка, пятый столбец).
+            const parsingDate = rows[0]?.[4]?.trim() || '';
+            parsingDateEl.textContent = formatRshnDate(parsingDate);
+
+            // Для каждой страны берём максимальную дату из колонки C.
+            const byCountry = new Map();
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i] || [];
+                const country = String(row[0] || '').trim();
+                const dateRaw = String(row[2] || '').trim();
+                if (!country) continue;
+                const date = parseRshnDate(dateRaw);
+                const ts = date ? date.getTime() : -Infinity;
+                const prev = byCountry.get(country);
+                if (!prev || ts > prev.ts) byCountry.set(country, { country, raw: dateRaw, date, ts });
+            }
+
+            const list = [...byCountry.values()].sort((a,b) => {
+                if (a.ts !== b.ts) return b.ts - a.ts;
+                return a.country.localeCompare(b.country, 'ru');
+            });
+            countEl.textContent = String(list.length);
+
+            if (!list.length) {
+                wrap.innerHTML = '<div class="empty-state">Не найдено стран с данными в колонках A и C.</div>';
+                status.textContent = '';
+                return;
+            }
+
+            wrap.innerHTML = `<table class="rshn-updates-table"><thead><tr><th class="rshn-rank">№</th><th>Страна</th><th>Последнее изменение</th></tr></thead><tbody>${
+                list.map((item, index) => {
+                    const cls = index < 3 && item.date ? ' class="rshn-date rshn-fresh"' : ' class="rshn-date"';
+                    return `<tr><td class="rshn-rank">${index + 1}</td><td>${escapeHtml(item.country)}</td><td${cls}>${escapeHtml(formatRshnDate(item.raw))}</td></tr>`;
+                }).join('')
+            }</tbody></table>`;
+            status.textContent = `Показано стран: ${list.length}. Список автоматически сортируется по дате последнего изменения.`;
+        } catch (err) {
+            console.error('RSHN updates:', err);
+            wrap.innerHTML = '<div class="empty-state">Не удалось загрузить данные РСХН.</div>';
+            status.textContent = `Ошибка загрузки: ${err.message}`;
+        }
+    }
+
 
     // ===== СООТВЕТСТВИЕ КЛАССОВ SVG → НАЗВАНИЯ СТРАН =====
     const CLASS_TO_COUNTRY = {
@@ -5369,11 +5509,16 @@
             
             if (this.dataset.tab === 'tab4') updateRefPanel();
             if (this.dataset.tab === 'tabAnalytics') initAnalytics();
+            if (this.dataset.tab === 'tabRshnUpdates') loadRshnUpdates();
         });
     });
 
+    // Кнопка ручного обновления списка РСХН.
+    document.getElementById('rshnRefreshBtn')?.addEventListener('click', loadRshnUpdates);
+
     // ===== ЗАПУСК =====
     loadData();
+    loadRshnUpdates();
 </script>
 </body>
 </html>

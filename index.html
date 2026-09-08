@@ -319,8 +319,8 @@
             flex-wrap: wrap;
         }
         .checkbox-grid {
-            max-height: 300px;
-            overflow-y: auto;
+            max-height: none;
+            overflow-y: visible;
             display: flex;
             flex-direction: column;
             gap: 5px;
@@ -687,7 +687,7 @@
             <label for="multiFilterInput">Фильтр объектов</label>
             <input type="text" id="multiFilterInput" placeholder="Поиск в списке..." oninput="filterMultiList()">
         </div>
-        <div class="card" style="max-height:300px; overflow-y:auto; margin-bottom:14px;">
+        <div class="card" style="max-height:none; overflow:visible; margin-bottom:14px;">
             <div id="multiCheckboxList" class="checkbox-grid"></div>
         </div>
         <button class="btn" onclick="analyzeSelectedObjects()">Анализировать страны</button>
@@ -784,7 +784,8 @@
     </div>
 
     <div class="footer-note">
-        <a href="https://fsvps.gov.ru/importexport/" target="_blank">Актуальные требования на сайте Россельхознадзора →</a>
+        <a href="https://fsvps.gov.ru/importexport/" target="_blank" rel="noopener noreferrer">Актуальные требования на сайте Россельхознадзора →</a><br>
+        <a href="mailto:dolinsky.aleksey@yandex.ru">Если нашли ошибку, сообщите →</a>
     </div>
 </div>
 
@@ -5161,7 +5162,7 @@
     function renderMultiCheckboxes() {
         const container = document.getElementById('multiCheckboxList');
         container.innerHTML = '';
-        const showObjects = allObjects.slice(0, 200);
+        const showObjects = allObjects;
         showObjects.forEach(obj => {
             const div = document.createElement('div');
             div.className = 'checkbox-item';
@@ -5172,14 +5173,6 @@
             `;
             container.appendChild(div);
         });
-        if (allObjects.length > 200) {
-            const div = document.createElement('div');
-            div.className = 'checkbox-item';
-            div.style.color = '#537a71';
-            div.style.padding = '4px 0';
-            div.textContent = `Показано 200 из ${allObjects.length}`;
-            container.appendChild(div);
-        }
     }
 
     function filterMultiList() {

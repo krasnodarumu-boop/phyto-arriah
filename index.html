@@ -178,6 +178,21 @@
             font-weight: 700;
             color: #1e6b5e;
         }
+        .research-stat {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .research-icon {
+            width: 21px;
+            height: 21px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            line-height: 1;
+            flex: 0 0 21px;
+        }
 
         .table-wrap {
             overflow-x: auto;
@@ -5025,11 +5040,25 @@
             stats[type] = (stats[type] || 0) + 1;
         });
 
+        const researchIcons = {
+            'Энтомология': '🪲',
+            'Гербология': '🌿',
+            'Вирусология': '🦠',
+            'Бактериология': '🔬',
+            'Фитогельминтология': '🪱',
+            'Микология': '🍄',
+            'Прочее': '🔎'
+        };
+
         let statsHtml = `<div class="stats-row">`;
         const typeOrder = ['Энтомология', 'Гербология', 'Вирусология', 'Бактериология', 'Фитогельминтология', 'Микология', 'Прочее'];
         typeOrder.forEach(type => {
             if (stats[type]) {
-                statsHtml += `<span class="stat-item"><strong>${type}:</strong> <span class="count">${stats[type]}</span></span>`;
+                const icon = researchIcons[type] || '🔎';
+                statsHtml += `<span class="stat-item research-stat">
+                    <span class="research-icon" aria-hidden="true">${icon}</span>
+                    <strong>${type}:</strong> <span class="count">${stats[type]}</span>
+                </span>`;
             }
         });
         statsHtml += `<span class="stat-item" style="margin-left:auto;"><strong>Всего:</strong> <span class="count">${rows.length}</span></span>`;

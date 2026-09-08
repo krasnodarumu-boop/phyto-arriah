@@ -212,6 +212,8 @@
             font-variant-numeric: tabular-nums;
         }
         tr.highlight td { background: #fff5e0; border-left: 3px solid #d9a75c; }
+        .highlight-note { display:flex; align-items:center; gap:9px; margin:10px 0 2px; padding:9px 12px; border:1px solid #f0dfb9; background:#fffaf0; color:#6d5a34; border-radius:9px; font-size:12px; }
+        .highlight-note-mark { width:14px; height:14px; flex:0 0 14px; border-radius:3px; background:#fff5e0; border:1px solid #d9a75c; }
         tr:hover td { background: #f4fbf9; }
 
         .searchable-select {
@@ -253,21 +255,23 @@
         .option-item:hover { background: #e4f3ed; }
 
         .country-flag {
-    width: 24px;
-    height: 16px;
-    display: inline-block;
-    vertical-align: -3px;
-    flex: 0 0 auto;
-    border-radius: 2px;
-    overflow: hidden;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.08);
-}
-.country-name {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-}
-.country-tag {
+            width: 24px;
+            height: 16px;
+            display: inline-block;
+            vertical-align: -3px;
+            flex: 0 0 auto;
+            border-radius: 2px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px rgba(0,0,0,.08);
+        }
+
+        .country-name {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .country-tag {
             display: inline-block;
             background: #ecf6f2;
             padding: 5px 12px;
@@ -573,7 +577,25 @@
             .map-wrapper { max-height: 500px; min-height: 240px; }
             .map-wrapper svg { width: 900px; min-width: 900px; }
         }
-    </style>
+    
+/* ===== QUARANTINE ANALYTICS 2.0 ===== */
+:root{--qa-accent:#1e6b5e;--qa-accent2:#2d8a78;--qa-bg:#f5faf8;--qa-border:#dbeae6;--qa-text:#173b35}
+.analytics-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:14px 0}.metric-card{background:linear-gradient(145deg,#fff,#f7fcfa);border:1px solid var(--qa-border);border-radius:15px;padding:16px;box-shadow:0 3px 12px rgba(30,107,94,.05)}.metric-card .metric-label{font-size:12px;color:#66847d;text-transform:uppercase;letter-spacing:.04em}.metric-card .metric-value{font-size:28px;font-weight:750;color:var(--qa-text);margin-top:5px}.metric-card .metric-sub{font-size:12px;color:#7b9690;margin-top:3px}
+.analytics-layout{display:grid;grid-template-columns:1fr 1fr;gap:14px}.analytics-card{background:#fff;border:1px solid var(--qa-border);border-radius:15px;padding:16px;overflow:hidden}.analytics-card h3{margin:0 0 12px;color:var(--qa-text)}.bar-row{display:grid;grid-template-columns:minmax(120px,1fr) 3fr 45px;gap:9px;align-items:center;margin:9px 0;font-size:13px}.bar-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bar-track{height:9px;background:#edf4f1;border-radius:99px;overflow:hidden}.bar-fill{height:100%;background:linear-gradient(90deg,var(--qa-accent),#61b6a3);border-radius:99px;min-width:2px}.bar-value{text-align:right;font-weight:700;color:var(--qa-text)}.analytics-filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.analytics-filters .field{min-width:0}.analytics-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.btn-secondary{border:1px solid var(--qa-border);background:#fff;color:var(--qa-text);padding:9px 13px;border-radius:10px;cursor:pointer}.btn-secondary:hover{background:#f1f8f5}.pill-row{display:flex;gap:6px;flex-wrap:wrap}.research-pill{padding:6px 9px;border-radius:999px;background:#eef7f4;color:#255e54;font-size:12px}
+.country-insight{margin-top:12px;padding:12px;border-radius:12px;background:#f7fbfa;border:1px solid #e4efec}.empty-state{padding:28px;text-align:center;color:#729089}.version-badge{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;background:#eaf6f2;color:#1e6b5e;font-size:11px;font-weight:700}
+@media(max-width:900px){.analytics-grid{grid-template-columns:repeat(2,1fr)}.analytics-layout{grid-template-columns:1fr}.analytics-filters{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.analytics-grid{grid-template-columns:1fr 1fr}.analytics-filters{grid-template-columns:1fr}.bar-row{grid-template-columns:105px 1fr 38px}}
+
+/* ===== MODERN ANALYTICS UI ===== */
+.analytics-hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;padding:22px;margin-bottom:14px;border:1px solid var(--qa-border);border-radius:18px;background:linear-gradient(135deg,#f7fcfa,#eef8f4);box-shadow:0 8px 28px rgba(30,107,94,.06)}
+.analytics-kicker{font-size:11px;letter-spacing:.14em;font-weight:800;color:var(--qa-accent2);margin-bottom:5px}.analytics-hero h2{margin:0;color:var(--qa-text);font-size:25px}.analytics-hero p{margin:7px 0 0;color:#66847d;max-width:760px;font-size:13px;line-height:1.5}.analytics-hero-actions{display:flex;gap:8px;flex-wrap:wrap}.advanced-filters{padding:14px;border:1px solid var(--qa-border);border-radius:15px;background:#fff;box-shadow:0 3px 14px rgba(30,107,94,.04)}
+.analytics-dashboard-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;margin-top:14px}.analytics-wide{min-height:250px}.card-heading{display:flex;justify-content:space-between;gap:10px;margin-bottom:14px}.card-heading h3{margin:0}.card-heading span{display:block;margin-top:3px;color:#7a938d;font-size:12px}.profile-chart{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:end;min-height:180px}.profile-item{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:180px}.profile-bar-wrap{height:135px;width:54px;display:flex;align-items:flex-end}.profile-bar{width:100%;border-radius:10px 10px 3px 3px;background:linear-gradient(180deg,#54aa98,#1e6b5e);min-height:4px}.profile-value{font-weight:800;color:var(--qa-text);margin-top:7px}.profile-label{text-align:center;font-size:12px;color:#6c8881;margin-top:4px}.geo-stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}.geo-stat{padding:11px;border:1px solid #e4efec;border-radius:11px;background:#f9fcfb}.geo-stat b{display:block;font-size:20px;color:var(--qa-text)}.geo-stat span{font-size:11px;color:#718b85}.comparison-card{margin-top:14px}.comparison-controls{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end}.comparison-result{margin-top:14px}.compare-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}.compare-box{padding:14px;border:1px solid #e3efeb;border-radius:12px;background:#fafdfc}.compare-box h4{margin:0 0 9px;color:var(--qa-text)}.compare-box ul{margin:0;padding-left:18px;color:#526f68;font-size:13px;line-height:1.65}.compare-common{background:#f0f8f5}.insight-box{line-height:1.65;color:#526f68;font-size:13px}.insight-box strong{color:var(--qa-text)}
+@media(max-width:900px){.analytics-hero{align-items:flex-start;flex-direction:column}.analytics-dashboard-grid{grid-template-columns:1fr}.comparison-controls{grid-template-columns:1fr}.compare-grid{grid-template-columns:1fr}}
+</style>
+	 <script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <div class="container" id="app">
@@ -588,6 +610,7 @@
         <button class="tab-btn" data-tab="tabMap">🌍 Карта</button>
         <button class="tab-btn" data-tab="tab2">По объекту</button>
         <button class="tab-btn" data-tab="tab3">Исключение</button>
+        <button class="tab-btn" data-tab="tabAnalytics">📊 Аналитика</button>
         <button class="tab-btn" data-tab="tab4">Справочная</button>
     </div>
 
@@ -606,6 +629,7 @@
         <div id="countryDisplay" class="country-display" style="display:none;"></div>
         <div id="statusLine"></div>
         <div id="tableWrap" class="table-wrap"><p class="text-muted" style="padding:16px;">Выберите страну и культуру</p></div>
+        <div class="highlight-note"><span class="highlight-note-mark"></span><span><strong>Часто встречаемые объекты</strong> — выделены жёлтым цветом.</span></div>
     </div>
 
     <!-- ============== КАРТА ============== -->
@@ -670,6 +694,68 @@
         <div id="multiResult" class="mt-3"></div>
     </div>
 
+
+
+    <!-- ============== АНАЛИТИКА: ЦЕНТР АНАЛИЗА ============== -->
+    <div class="tab-content" id="tabAnalytics">
+        <div class="analytics-hero">
+            <div>
+                <h2>📊 Центр анализа требований</h2>
+                <p>Срез базы по странам, культурам, карантинным объектам и видам исследований. Все показатели пересчитываются мгновенно при изменении фильтров.</p>
+            </div>
+            <div class="analytics-hero-actions">
+                <button class="btn btn-secondary" onclick="resetAnalyticsFilters()">↺ Сбросить</button>
+                <button class="btn btn-secondary" onclick="printAnalytics()">🖨 Печать</button>
+            </div>
+        </div>
+
+        <div class="analytics-filters advanced-filters">
+            <div class="field"><label for="anCountry">Страна</label><select id="anCountry"><option value="">Все страны</option></select></div>
+            <div class="field"><label for="anCrop">Культура</label><select id="anCrop"><option value="">Все культуры</option></select></div>
+            <div class="field"><label for="anObject">Карантинный объект</label><select id="anObject"><option value="">Все объекты</option></select></div>
+            <div class="field"><label for="anResearch">Вид исследования</label><select id="anResearch"><option value="">Все виды</option></select></div>
+        </div>
+
+        <div id="analyticsMetrics" class="analytics-grid"></div>
+
+        <div class="analytics-dashboard-grid">
+            <div class="analytics-card analytics-wide">
+                <div class="card-heading"><div><h3>📈 Профиль требований</h3><span>Сравнение основных категорий в текущей выборке</span></div></div>
+                <div id="profileChart" class="profile-chart"></div>
+            </div>
+            <div class="analytics-card">
+                <div class="card-heading"><div><h3>🌐 География</h3><span>Страны и ИКР</span></div></div>
+                <div id="geoSummary"></div>
+            </div>
+            <div class="analytics-card">
+                <div class="card-heading"><div><h3>🌾 Культуры-лидеры</h3><span>По количеству записей</span></div></div>
+                <div id="topCrops"></div>
+            </div>
+            <div class="analytics-card">
+                <div class="card-heading"><div><h3>🐛 Карантинные объекты</h3><span>Наиболее часто встречаются</span></div></div>
+                <div id="topObjects"></div>
+            </div>
+            <div class="analytics-card">
+                <div class="card-heading"><div><h3>🔬 Виды исследований</h3><span>Структура текущей выборки</span></div></div>
+                <div id="researchBreakdown"></div>
+            </div>
+        </div>
+
+        <div class="analytics-card comparison-card">
+            <div class="card-heading"><div><h3>⚖️ Сравнительный анализ</h3><span>Что отличает страны и культуры внутри текущей базы</span></div></div>
+            <div class="comparison-controls">
+                <div class="field"><label for="compareCountryA">Страна A</label><select id="compareCountryA"><option value="">Выберите</option></select></div>
+                <div class="field"><label for="compareCountryB">Страна B</label><select id="compareCountryB"><option value="">Выберите</option></select></div>
+                <button class="btn" onclick="compareCountries()">Сравнить</button>
+            </div>
+            <div id="comparisonResult" class="comparison-result"><div class="empty-state">Выберите две страны для сравнения.</div></div>
+        </div>
+
+        <div class="analytics-layout">
+            <div class="analytics-card"><h3>💡 Выводы</h3><div id="analyticsInsight" class="insight-box"></div></div>
+        </div>
+    </div>
+
     <!-- ============== ВКЛАДКА 4: СПРАВОЧНАЯ ============== -->
     <div class="tab-content" id="tab4">
         <div id="refPanel" class="ref-panel">
@@ -721,7 +807,7 @@
         "Мали", "Мозамбик", "Молдова", "Мьянма", "Намибия",
         "Непал", "Нигерия", "Никарагуа", "Оман", "Пакистан",
         "Перу", "Руанда", "Сейшелы", "Сингапур", "Сирия",
-        "Судан", "Таиланд", "Танзания", "Того", "Уганда",
+        "Судан", "Таиланд", "Танзания", "Туркменистан", "Того", "Уганда",
         "Узбекистан", "Филиппины", "Шри-Ланка", "Эфиопия", "ЮАР"
     ]);
 
@@ -4393,11 +4479,6 @@
         return flagSvg(getCountryCode(countryName));
     }
 
-    function getCountryCode(countryName) {
-        return COUNTRY_NAME_TO_CODE[countryName] || '';
-    }
-
-
     function getCountryFromPath(el) {
         const classes = Array.from(el.classList || []);
         for (const cls of classes) {
@@ -4453,7 +4534,7 @@
                     : 0;
 
                 tooltip.innerHTML =
-                    `<strong>${getCountryFlag(country)} ${country}</strong><br>` +
+                    `<strong>${country}</strong><br>` +
                     `${mode === 'object' ? 'Объект' : 'Культура'}: ${selectedValue || '—'}<br>` +
                     `Требований: ${count > 0 ? count : 'нет данных'}`;
 
@@ -4784,7 +4865,7 @@
 
     // ===== ОСНОВНАЯ ЗАГРУЗКА ДАННЫХ =====
     async function loadData() {
-        try {
+            try {
             document.getElementById('countrySelect').innerHTML = '<option value="">Загрузка...</option>';
             document.getElementById('mapCropSelect').innerHTML = '<option value="">Загрузка...</option>';
             document.getElementById('mapObjectSelect').innerHTML = '<option value="">Загрузка...</option>';
@@ -5177,6 +5258,84 @@
         detailDiv.textContent = text || 'Нет данных';
     }
 
+
+
+    // ========================================================================
+    //  АНАЛИТИКА — ЦЕНТР АНАЛИЗА
+    // ========================================================================
+    const analyticsState = { initialized:false };
+    function uniqueSorted(values){ return Array.from(new Set(values.filter(Boolean))).sort((a,b)=>a.localeCompare(b,'ru')); }
+    function fillSelect(id, values, first){
+        const el=document.getElementById(id); if(!el)return;
+        const old=el.value; el.innerHTML='';
+        const op=document.createElement('option'); op.value=''; op.textContent=first; el.appendChild(op);
+        values.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;el.appendChild(o)});
+        if(values.includes(old)) el.value=old;
+    }
+    function initAnalytics(){
+        if(!fullData.length)return;
+        fillSelect('anCountry',uniqueSorted(fullData.map(d=>d.country)),'Все страны');
+        fillSelect('anCrop',uniqueSorted(fullData.map(d=>d.crop)),'Все культуры');
+        fillSelect('anObject',uniqueSorted(fullData.map(d=>d.rus)),'Все объекты');
+        fillSelect('anResearch',uniqueSorted(fullData.map(d=>getResearchType(d.vid))),'Все виды');
+        const countries=uniqueSorted(fullData.map(d=>d.country));
+        fillSelect('compareCountryA',countries,'Выберите страну');
+        fillSelect('compareCountryB',countries,'Выберите страну');
+        ['anCountry','anCrop','anObject','anResearch'].forEach(id=>document.getElementById(id).onchange=renderAnalytics);
+        analyticsState.initialized=true; renderAnalytics();
+    }
+    function getAnalyticsData(){
+        const country=document.getElementById('anCountry')?.value||'', crop=document.getElementById('anCrop')?.value||'', object=document.getElementById('anObject')?.value||'', research=document.getElementById('anResearch')?.value||'';
+        return fullData.filter(d=>(!country||d.country===country)&&(!crop||d.crop===crop)&&(!object||d.rus===object)&&(!research||getResearchType(d.vid)===research));
+    }
+    function countBy(rows,key){const m=new Map();rows.forEach(r=>{const v=r[key]||'Не указано';m.set(v,(m.get(v)||0)+1)});return [...m.entries()].sort((a,b)=>b[1]-a[1]||String(a[0]).localeCompare(String(b[0]),'ru'));}
+    function escapeHtml(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+    function renderBars(elId,entries,limit=8){
+        const el=document.getElementById(elId); if(!el)return;
+        if(!entries.length){el.innerHTML='<div class="empty-state">Нет данных</div>';return;}
+        const top=entries.slice(0,limit),max=top[0][1];
+        el.innerHTML=top.map(([name,n])=>`<div class="bar-row"><div class="bar-label" title="${escapeHtml(name)}">${escapeHtml(name)}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.max(3,n/max*100)}%"></div></div><div class="bar-value">${n}</div></div>`).join('');
+    }
+    function renderAnalytics(){
+        if(!fullData.length)return;
+        const rows=getAnalyticsData();
+        const countries=[...new Set(rows.map(d=>d.country))], crops=[...new Set(rows.map(d=>d.crop))], objects=[...new Set(rows.map(d=>d.rus))];
+        const ikrCountries=countries.filter(isIKR);
+        document.getElementById('analyticsMetrics').innerHTML=`
+          <div class="metric-card"><div class="metric-label">Записей</div><div class="metric-value">${rows.length.toLocaleString('ru-RU')}</div><div class="metric-sub">требований в текущем срезе</div></div>
+          <div class="metric-card"><div class="metric-label">Стран</div><div class="metric-value">${countries.length}</div><div class="metric-sub">географий с данными</div></div>
+          <div class="metric-card"><div class="metric-label">Культур</div><div class="metric-value">${crops.length}</div><div class="metric-sub">уникальных культур</div></div>
+          <div class="metric-card"><div class="metric-label">Объектов</div><div class="metric-value">${objects.length}</div><div class="metric-sub">карантинных объектов</div></div>`;
+        renderBars('topCountries',countBy(rows,'country'));
+        renderBars('topCrops',countBy(rows,'crop'));
+        renderBars('topObjects',countBy(rows,'rus'));
+        const researchMap=new Map();rows.forEach(d=>{const k=getResearchType(d.vid);researchMap.set(k,(researchMap.get(k)||0)+1)});
+        const researchEntries=[...researchMap.entries()].sort((a,b)=>b[1]-a[1]);
+        document.getElementById('researchBreakdown').innerHTML=researchEntries.length?`<div class="pill-row">${researchEntries.map(([n,v])=>`<span class="research-pill">${escapeHtml(n)}: <b>${v}</b></span>`).join('')}</div>`:'<div class="empty-state">Нет данных</div>';
+        const profile=[['Страны',countries.length],['Культуры',crops.length],['Объекты',objects.length]], max=Math.max(...profile.map(x=>x[1]),1);
+        document.getElementById('profileChart').innerHTML=profile.map(([n,v])=>`<div class="profile-item"><div class="profile-bar-wrap"><div class="profile-bar" style="height:${Math.max(5,v/max*100)}%"></div></div><div class="profile-value">${v}</div><div class="profile-label">${n}</div></div>`).join('');
+        document.getElementById('geoSummary').innerHTML=`<div class="geo-stats"><div class="geo-stat"><b>${countries.length}</b><span>стран</span></div><div class="geo-stat"><b>${ikrCountries.length}</b><span>стран с ИКР</span></div><div class="geo-stat"><b>${rows.length?Math.round(rows.length/Math.max(countries.length,1)):0}</b><span>записей на страну</span></div><div class="geo-stat"><b>${researchEntries.length}</b><span>видов исследований</span></div></div>`;
+        const country=document.getElementById('anCountry').value,crop=document.getElementById('anCrop').value,obj=document.getElementById('anObject').value;
+        let insight='Выберите один или несколько фильтров — аналитический центр автоматически перестроит все показатели.';
+        if(country){const cc=countBy(rows,'crop').slice(0,3).map(x=>`${escapeHtml(x[0])} (${x[1]})`).join(', ');insight=`<strong>${escapeHtml(country)}</strong>: ${rows.length} записей, ${crops.length} культур и ${objects.length} объектов. Наиболее представленные культуры: ${cc||'нет данных'}. ${isIKR(country)?'⚠️ Страна входит в перечень ИКР.':''}`;}
+        else if(crop){const cc=countBy(rows,'country').slice(0,3).map(x=>`${escapeHtml(x[0])} (${x[1]})`).join(', ');insight=`<strong>${escapeHtml(crop)}</strong>: требования найдены для ${countries.length} стран и ${objects.length} объектов. Лидеры по числу записей: ${cc||'нет данных'}.`;}
+        else if(obj){insight=`<strong>${escapeHtml(obj)}</strong>: объект встречается в ${countries.length} странах и связан с ${crops.length} культурами.`;}
+        document.getElementById('analyticsInsight').innerHTML=insight;
+    }
+    function resetAnalyticsFilters(){['anCountry','anCrop','anObject','anResearch'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=''});renderAnalytics();}
+    function compareCountries(){
+        const a=document.getElementById('compareCountryA').value,b=document.getElementById('compareCountryB').value,el=document.getElementById('comparisonResult');
+        if(!a||!b||a===b){el.innerHTML='<div class="empty-state">Выберите две разные страны для сравнения.</div>';return;}
+        const A=fullData.filter(d=>d.country===a),B=fullData.filter(d=>d.country===b);
+        const setA=new Set(A.map(d=>d.rus)),setB=new Set(B.map(d=>d.rus));
+        const common=[...setA].filter(x=>setB.has(x)).sort((x,y)=>x.localeCompare(y,'ru'));
+        const onlyA=[...setA].filter(x=>!setB.has(x)).sort((x,y)=>x.localeCompare(y,'ru'));
+        const onlyB=[...setB].filter(x=>!setA.has(x)).sort((x,y)=>x.localeCompare(y,'ru'));
+        const list=x=>x.length?x.slice(0,12).map(v=>`<li>${escapeHtml(v)}</li>`).join(''):'<li>Нет уникальных объектов</li>';
+        el.innerHTML=`<div class="compare-grid"><div class="compare-box"><h4>${escapeHtml(a)} · ${A.length} записей</h4><ul>${list(onlyA)}</ul></div><div class="compare-box compare-common"><h4>Общие объекты · ${common.length}</h4><ul>${list(common)}</ul></div><div class="compare-box"><h4>${escapeHtml(b)} · ${B.length} записей</h4><ul>${list(onlyB)}</ul></div></div>`;
+    }
+    function printAnalytics(){window.print();}
+
     // ===== ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК =====
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -5187,6 +5346,7 @@
             if (target) target.classList.add('active');
             
             if (this.dataset.tab === 'tab4') updateRefPanel();
+            if (this.dataset.tab === 'tabAnalytics') initAnalytics();
         });
     });
 

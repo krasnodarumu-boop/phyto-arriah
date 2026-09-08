@@ -107,6 +107,16 @@
             .rshn-updates-table th, .rshn-updates-table td { padding:10px 9px; }
         }
 
+
+        /* ===== DASHBOARD 2.0 ===== */
+        .dashboard-hero{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:16px;padding:20px;border:1px solid #dbeae6;border-radius:18px;background:linear-gradient(135deg,#f2faf7,#fff)}
+        .dashboard-hero h2{margin:0 0 6px;font-size:clamp(20px,3vw,28px);color:#1e6b5e}.dashboard-hero p{margin:0;color:#5f7771;line-height:1.5}.dashboard-actions{display:flex;gap:8px;flex-shrink:0}
+        .dashboard-metrics{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:20px}.dashboard-metric{padding:16px;border:1px solid #dbeae6;border-radius:16px;background:#fff;box-shadow:0 4px 16px rgba(0,20,20,.035)}.dashboard-metric .metric-icon{font-size:20px;margin-bottom:7px}.dashboard-metric .metric-value{font-size:clamp(20px,3vw,30px);line-height:1;font-weight:800;color:#1e6b5e;word-break:break-word}.dashboard-metric .metric-label{margin-top:7px;color:#5f7771;font-size:12px}
+        .dashboard-section-title{display:flex;align-items:end;justify-content:space-between;margin:18px 0 10px}.dashboard-section-title h3{margin:0 0 3px;color:#245d52;font-size:18px}.dashboard-section-title span{color:#78908a;font-size:12px}.dashboard-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.dashboard-card{border:1px solid #dbeae6;border-radius:16px;background:#fff;padding:16px;box-shadow:0 4px 16px rgba(0,20,20,.035);min-width:0}.dashboard-wide{width:100%}.dashboard-card .card-heading{margin-bottom:12px}.dashboard-card .card-heading h3{margin:0 0 3px;color:#245d52;font-size:15px;line-height:1.35}.dashboard-card .card-heading span{color:#78908a;font-size:11px}.dashboard-bars{display:flex;flex-direction:column;gap:7px}.dash-bar-row{display:grid;grid-template-columns:minmax(90px,1.2fr) 2fr 44px;align-items:center;gap:8px;min-height:27px}.dash-bar-label{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dash-bar-track{height:9px;background:#edf5f2;border-radius:99px;overflow:hidden}.dash-bar-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#8bc9b7,#1e6b5e)}.dash-bar-value{text-align:right;font-weight:700;font-size:12px;color:#1e6b5e}.dash-empty{color:#78908a;font-size:13px;padding:8px 0}
+        .monthly-chart{display:grid;grid-template-columns:repeat(12,minmax(22px,1fr));gap:8px;align-items:end;min-height:210px;padding-top:8px}.month-col{height:190px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px;min-width:0}.month-value{font-size:10px;font-weight:700;color:#245d52;min-height:12px}.month-bar-wrap{height:145px;width:100%;display:flex;align-items:flex-end;justify-content:center}.month-bar{width:min(34px,72%);min-height:3px;border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#5da995,#1e6b5e)}.month-label{font-size:10px;color:#78908a;white-space:nowrap}.dashboard-rshn-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.rshn-summary-card{padding:13px;border:1px solid #e1ece9;border-radius:12px;background:#fafdfe}.rshn-summary-card strong{display:block;font-size:15px;margin-bottom:5px;color:#234f47}.rshn-summary-card span{font-size:12px;color:#607a73}.mobile-quick-search{display:none}
+        @media(max-width:900px){.dashboard-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}.dashboard-grid{grid-template-columns:1fr}.dashboard-rshn-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+        @media(max-width:700px){body{padding:8px 8px 82px}.container{padding:14px 10px 24px;border-radius:15px}.subtitle{margin-bottom:9px}.tabs{position:fixed;left:0;right:0;bottom:0;z-index:1000;margin:0;padding:7px 8px calc(7px + env(safe-area-inset-bottom));border-top:1px solid #d7e8e3;border-bottom:none;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 -5px 22px rgba(0,20,20,.10);display:flex;flex-wrap:nowrap;overflow-x:auto;gap:6px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab-btn{flex:0 0 auto;min-height:42px;padding:9px 13px;font-size:13px;white-space:nowrap}.mobile-quick-search{display:flex;position:sticky;top:7px;z-index:90;align-items:center;gap:8px;margin:0 0 12px;padding:8px 10px;background:#fff;border:1px solid #dbeae6;border-radius:14px;box-shadow:0 5px 18px rgba(0,20,20,.08)}.mobile-search-icon{font-size:20px;color:#1e6b5e;line-height:1}.mobile-quick-search input{border:none;outline:none;width:100%;min-width:0;font-size:16px;color:#1f3d39;background:transparent}.mobile-quick-search button{border:none;background:#edf7f4;color:#1e6b5e;border-radius:50%;width:30px;height:30px;font-size:20px;line-height:1;cursor:pointer}.mobile-search-results{position:absolute;left:0;right:0;top:calc(100% + 6px);background:#fff;border:1px solid #dbeae6;border-radius:13px;box-shadow:0 10px 25px rgba(0,20,20,.12);overflow:hidden;display:none}.mobile-search-results.show{display:block}.mobile-search-result{display:block;width:100%;border:none;background:#fff;padding:11px 13px;text-align:left;border-bottom:1px solid #edf3f1;color:#234f47;font-size:13px;cursor:pointer}.mobile-search-result small{display:block;margin-top:2px;color:#78908a}.dashboard-hero{flex-direction:column;align-items:flex-start;padding:15px}.dashboard-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.dashboard-metric{padding:13px}.dashboard-card{padding:13px}.dash-bar-row{grid-template-columns:minmax(82px,1.15fr) 1.8fr 38px;gap:6px}.monthly-chart{gap:3px;min-height:180px}.month-col{height:165px}.month-bar-wrap{height:125px}.month-label{font-size:9px;transform:rotate(-45deg);transform-origin:top center;margin-top:5px}.dashboard-rshn-grid{grid-template-columns:1fr}.controls,.map-controls{gap:9px}.field{min-width:100%}select,input,button.btn{min-height:44px;font-size:16px}.table-wrap,.rshn-table-wrap{overflow-x:auto}}
+
         .controls {
             display: flex;
             flex-wrap: wrap;
@@ -646,16 +656,21 @@
     <div class="subtitle">
         <span>Выбор страны и культуры для просмотра требований</span>
     </div>
+    <div class="mobile-quick-search" id="mobileQuickSearch">
+        <span class="mobile-search-icon">⌕</span>
+        <input id="mobileQuickSearchInput" type="search" placeholder="Поиск: страна, культура, объект…" autocomplete="off">
+        <button type="button" id="mobileQuickSearchClear" aria-label="Очистить">×</button>
+        <div id="mobileQuickSearchResults" class="mobile-search-results"></div>
+    </div>
 
     <!-- Вкладки -->
     <div class="tabs">
-        <button class="tab-btn active" data-tab="tab1">По культуре</button>
+        <button class="tab-btn active" data-tab="tab1">🌾 По культуре</button>
         <button class="tab-btn" data-tab="tabMap">🌍 Карта</button>
-        <button class="tab-btn" data-tab="tab2">По объекту</button>
-        <button class="tab-btn" data-tab="tab3">Исключение</button>
-        <button class="tab-btn" data-tab="tabAnalytics">📊 Аналитика</button>
+        <button class="tab-btn" data-tab="tab2">🔎 По объекту</button>
+        <button class="tab-btn" data-tab="tab3">⚠️ Исключение</button>
         <button class="tab-btn" data-tab="tabRshnUpdates">🔄 Обновления РСХН по странам</button>
-        <button class="tab-btn" data-tab="tab4">Справочная</button>
+        <button class="tab-btn" data-tab="tabDashboard">📊 Сводка</button>
     </div>
 
     <!-- ============== ВКЛАДКА 1 (активная) ============== -->
@@ -741,66 +756,6 @@
 
 
     <!-- ============== АНАЛИТИКА: ЦЕНТР АНАЛИЗА ============== -->
-    <div class="tab-content" id="tabAnalytics">
-        <div class="analytics-hero">
-            <div>
-                <h2>📊 Центр анализа требований</h2>
-                <p>Срез базы по странам, культурам, карантинным объектам и видам исследований. Все показатели пересчитываются мгновенно при изменении фильтров.</p>
-            </div>
-            <div class="analytics-hero-actions">
-                <button class="btn btn-secondary" onclick="resetAnalyticsFilters()">↺ Сбросить</button>
-                <button class="btn btn-secondary" onclick="printAnalytics()">🖨 Печать</button>
-            </div>
-        </div>
-
-        <div class="analytics-filters advanced-filters">
-            <div class="field"><label for="anCountry">Страна</label><select id="anCountry"><option value="">Все страны</option></select></div>
-            <div class="field"><label for="anCrop">Культура</label><select id="anCrop"><option value="">Все культуры</option></select></div>
-            <div class="field"><label for="anObject">Карантинный объект</label><select id="anObject"><option value="">Все объекты</option></select></div>
-            <div class="field"><label for="anResearch">Вид исследования</label><select id="anResearch"><option value="">Все виды</option></select></div>
-        </div>
-
-        <div id="analyticsMetrics" class="analytics-grid"></div>
-
-        <div class="analytics-dashboard-grid">
-            <div class="analytics-card analytics-wide">
-                <div class="card-heading"><div><h3>📈 Профиль требований</h3><span>Сравнение основных категорий в текущей выборке</span></div></div>
-                <div id="profileChart" class="profile-chart"></div>
-            </div>
-            <div class="analytics-card">
-                <div class="card-heading"><div><h3>🌐 География</h3><span>Страны и ИКР</span></div></div>
-                <div id="geoSummary"></div>
-            </div>
-            <div class="analytics-card">
-                <div class="card-heading"><div><h3>🌾 Культуры-лидеры</h3><span>По количеству записей</span></div></div>
-                <div id="topCrops"></div>
-            </div>
-            <div class="analytics-card">
-                <div class="card-heading"><div><h3>🐛 Карантинные объекты</h3><span>Наиболее часто встречаются</span></div></div>
-                <div id="topObjects"></div>
-            </div>
-            <div class="analytics-card">
-                <div class="card-heading"><div><h3>🔬 Виды исследований</h3><span>Структура текущей выборки</span></div></div>
-                <div id="researchBreakdown"></div>
-            </div>
-        </div>
-
-        <div class="analytics-card comparison-card">
-            <div class="card-heading"><div><h3>⚖️ Сравнительный анализ</h3><span>Что отличает страны и культуры внутри текущей базы</span></div></div>
-            <div class="comparison-controls">
-                <div class="field"><label for="compareCountryA">Страна A</label><select id="compareCountryA"><option value="">Выберите</option></select></div>
-                <div class="field"><label for="compareCountryB">Страна B</label><select id="compareCountryB"><option value="">Выберите</option></select></div>
-                <button class="btn" onclick="compareCountries()">Сравнить</button>
-            </div>
-            <div id="comparisonResult" class="comparison-result"><div class="empty-state">Выберите две страны для сравнения.</div></div>
-        </div>
-
-        <div class="analytics-layout">
-            <div class="analytics-card"><h3>💡 Выводы</h3><div id="analyticsInsight" class="insight-box"></div></div>
-        </div>
-    </div>
-
-
     <!-- ============== ОБНОВЛЕНИЯ РСХН ПО СТРАНАМ ============== -->
     <div class="tab-content" id="tabRshnUpdates">
         <div class="rshn-updates-hero">
@@ -826,31 +781,49 @@
         </div>
     </div>
 
-    <!-- ============== ВКЛАДКА 4: СПРАВОЧНАЯ ============== -->
-    <div class="tab-content" id="tab4">
-        <div id="refPanel" class="ref-panel">
-            <div class="ref-item">
-                <span class="label">Стран</span>
-                <span class="value" id="refCountries">—</span>
-            </div>
-            <div class="ref-item">
-                <span class="label">Культур</span>
-                <span class="value" id="refCrops">—</span>
-            </div>
-            <div class="ref-item">
-                <span class="label">Объектов</span>
-                <span class="value" id="refObjects">—</span>
-            </div>
-            <div class="ref-item">
-                <span class="label">Записей</span>
-                <span class="value" id="refRecords">—</span>
-            </div>
+    <!-- ============== СВОДКА / DASHBOARD ============== -->
+    <div class="tab-content" id="tabDashboard">
+        <div class="dashboard-hero">
+            <div><h2>📊 Сводная информация</h2><p>Главные показатели базы, рейтинги требований и динамика обновлений РСХН.</p></div>
+            <div class="dashboard-actions"><button class="btn btn-secondary" id="dashboardRefreshBtn">↻ Обновить</button></div>
         </div>
-        <div class="field" style="max-width:400px; margin-bottom:12px;">
-            <label for="refFilter">Фильтр по объекту</label>
-            <input type="text" id="refFilter" placeholder="начните вводить..." oninput="updateRefPanel()">
+        <div class="dashboard-metrics" id="dashboardMetrics"></div>
+        <div class="dashboard-section-title"><div><h3>🏆 Основные рейтинги</h3><span>Текущий срез базы</span></div></div>
+        <div class="dashboard-grid">
+            <div class="dashboard-card"><div class="card-heading"><div><h3>🌍 ТОП-10 стран по количеству требований</h3><span>Количество записей</span></div></div><div id="dashTopCountries" class="dashboard-bars"></div></div>
+            <div class="dashboard-card"><div class="card-heading"><div><h3>🌾 ТОП-10 культур по количеству стран</h3><span>Уникальные страны по каждой культуре</span></div></div><div id="dashTopCrops" class="dashboard-bars"></div></div>
+            <div class="dashboard-card"><div class="card-heading"><div><h3>🔄 Страны с наибольшим количеством изменений за месяц</h3><span>Уникальные даты изменений за последние 30 дней</span></div></div><div id="dashCountryChanges" class="dashboard-bars"></div></div>
+            <div class="dashboard-card"><div class="card-heading"><div><h3>🧬 Культуры, требования по которым чаще менялись</h3><span>Уникальные даты изменений</span></div></div><div id="dashCropChanges" class="dashboard-bars"></div></div>
         </div>
-        <div id="refDetail" class="copy-list">Введите фильтр для отображения списка объектов</div>
+        <div class="dashboard-section-title"><div><h3>📅 Распределение обновлений по месяцам</h3><span>Последние 12 месяцев</span></div></div>
+        <div class="dashboard-card dashboard-wide"><div id="dashMonthlyChart" class="monthly-chart"></div></div>
+        <div class="dashboard-section-title"><div><h3>🔄 Актуальность РСХН</h3><span>Сводка по датам последнего изменения стран</span></div></div>
+        <div class="dashboard-card dashboard-wide"><div id="dashRshnTable" class="dashboard-rshn-grid"></div></div>
+
+        <section class="dashboard-section dashboard-analysis-section">
+            <div class="dashboard-section-head">
+                <div><h3>🔎 Анализ выбранного среза</h3><p class="section-note">Детальный анализ базы по выбранным фильтрам — без отдельной вкладки.</p></div>
+                <div class="dashboard-actions"><button class="btn btn-secondary" type="button" onclick="resetAnalyticsFilters()">↺ Сбросить</button><button class="btn btn-secondary" type="button" onclick="printAnalytics()">🖨 Печать</button></div>
+            </div>
+            <div class="analytics-filters advanced-filters">
+                <div class="field"><label for="anCountry">Страна</label><select id="anCountry"><option value="">Все страны</option></select></div>
+                <div class="field"><label for="anCrop">Культура</label><select id="anCrop"><option value="">Все культуры</option></select></div>
+                <div class="field"><label for="anObject">Карантинный объект</label><select id="anObject"><option value="">Все объекты</option></select></div>
+                <div class="field"><label for="anResearch">Вид исследования</label><select id="anResearch"><option value="">Все виды</option></select></div>
+            </div>
+            <div id="analyticsMetrics" class="analytics-grid"></div>
+            <div class="analytics-dashboard-grid">
+                <div class="analytics-card analytics-wide"><div class="card-heading"><div><h3>📈 Профиль требований</h3><span>Текущий отфильтрованный срез</span></div></div><div id="profileChart" class="profile-chart"></div></div>
+                <div class="analytics-card"><div class="card-heading"><div><h3>🌐 География</h3><span>Страны и ИКР</span></div></div><div id="geoSummary"></div></div>
+                <div class="analytics-card"><div class="card-heading"><div><h3>🐛 Карантинные объекты</h3><span>Наиболее часто встречаются</span></div></div><div id="topObjects"></div></div>
+                <div class="analytics-card"><div class="card-heading"><div><h3>🔬 Виды исследований</h3><span>Структура текущей выборки</span></div></div><div id="researchBreakdown"></div></div>
+            </div>
+            <div class="analytics-card comparison-card"><div class="card-heading"><div><h3>⚖️ Сравнение стран</h3><span>Общие и отличающиеся карантинные объекты</span></div></div>
+                <div class="comparison-controls"><div class="field"><label for="compareCountryA">Страна A</label><select id="compareCountryA"><option value="">Выберите</option></select></div><div class="field"><label for="compareCountryB">Страна B</label><select id="compareCountryB"><option value="">Выберите</option></select></div><button class="btn" type="button" onclick="compareCountries()">Сравнить</button></div>
+                <div id="comparisonResult" class="comparison-result"><div class="empty-state">Выберите две страны для сравнения.</div></div>
+            </div>
+            <div class="analytics-card"><div class="card-heading"><div><h3>💡 Выводы</h3><span>Автоматический комментарий по текущему срезу</span></div></div><div id="analyticsInsight" class="insight-box"></div></div>
+        </section>
     </div>
 
     <div class="footer-note">
@@ -965,6 +938,7 @@
                 return a.country.localeCompare(b.country, 'ru');
             });
             countEl.textContent = String(list.length);
+            window.rshnCountryUpdates = list.map(item => ({ country:item.country, dateText:formatRshnDate(item.raw), ts:Number.isFinite(item.ts) ? item.ts : null }));
 
             if (!list.length) {
                 wrap.innerHTML = '<div class="empty-state">Не найдено стран с данными в колонках A и C.</div>';
@@ -979,6 +953,7 @@
                 }).join('')
             }</tbody></table>`;
             status.textContent = `Показано стран: ${list.length}. Список автоматически сортируется по дате последнего изменения.`;
+            renderDashboard();
         } catch (err) {
             console.error('RSHN updates:', err);
             wrap.innerHTML = '<div class="empty-state">Не удалось загрузить данные РСХН.</div>';
@@ -5081,7 +5056,6 @@
 
             initObjectSearch();
             renderMultiCheckboxes();
-            updateRefPanel();
 
         } catch (e) {
             console.error(e);
@@ -5385,42 +5359,19 @@
         resultDiv.innerHTML = html;
     }
 
-    // ===== Вкладка 4: Справочная =====
-    function updateRefPanel() {
-        const filter = document.getElementById('refFilter').value.trim().toLowerCase();
-        let filtered = fullData;
-        if (filter) {
-            filtered = filtered.filter(d => d.rus.toLowerCase().includes(filter));
-        }
-        const countriesSet = new Set(filtered.map(d => d.country));
-        const cropsSet2 = new Set(filtered.map(d => d.crop));
-        const objectsSet = new Set(filtered.map(d => d.rus));
-
-        document.getElementById('refCountries').textContent = countriesSet.size;
-        document.getElementById('refCrops').textContent = cropsSet2.size;
-        document.getElementById('refObjects').textContent = objectsSet.size;
-        document.getElementById('refRecords').textContent = filtered.length;
-
-        const detailDiv = document.getElementById('refDetail');
-        if (filtered.length === 0) {
-            detailDiv.textContent = 'Нет данных';
-            return;
-        }
-        const objMap = {};
-        filtered.forEach(d => {
-            if (!objMap[d.rus]) objMap[d.rus] = new Set();
-            objMap[d.rus].add(d.country);
-        });
-        const sortedObjs = Object.keys(objMap).sort();
-        let text = '';
-        sortedObjs.forEach(o => {
-            const countriesList = Array.from(objMap[o]).sort().join(', ');
-            text += `${o} → ${countriesList}\n`;
-        });
-        detailDiv.textContent = text || 'Нет данных';
-    }
-
-
+    // ===== СВОДКА / DASHBOARD =====
+    function dashParseDate(value){const raw=String(value||'').trim();if(!raw)return null;let m=raw.match(/^(\d{1,2})[.\/-](\d{1,2})[.\/-](\d{4})(?:[ T](\d{1,2}):(\d{2})(?::(\d{2}))?)?/);if(m)return new Date(+m[3],+m[2]-1,+m[1],+(m[4]||0),+(m[5]||0),+(m[6]||0));m=raw.match(/^(\d{4})[.\/-](\d{1,2})[.\/-](\d{1,2})(?:[ T](\d{1,2}):(\d{2})(?::(\d{2}))?)?/);if(m)return new Date(+m[1],+m[2]-1,+m[3],+(m[4]||0),+(m[5]||0),+(m[6]||0));const d=new Date(raw);return Number.isNaN(d.getTime())?null:d;}
+    function dashDateKey(v){const d=dashParseDate(v);return d?`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`:'';}
+    function dashMonthKey(v){const d=dashParseDate(v);return d?`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`:'';}
+    function dashMonthLabel(k){const [y,m]=k.split('-').map(Number);return new Intl.DateTimeFormat('ru-RU',{month:'short'}).format(new Date(y,m-1,1)).replace('.','')+' '+String(y).slice(2);}
+    function dashCount(vals,limit=10){const m=new Map();vals.forEach(v=>{if(v)m.set(v,(m.get(v)||0)+1)});return [...m.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'ru')).slice(0,limit);}
+    function dashDistinctDateCount(rows,key,days=30){const cutoff=Date.now()-days*86400000,m=new Map();rows.forEach(r=>{const d=dashParseDate(r.date),group=r[key];if(!d||!group||d.getTime()<cutoff)return;const dk=dashDateKey(r.date);if(!m.has(group))m.set(group,new Set());m.get(group).add(dk)});return [...m.entries()].map(([n,set])=>[n,set.size]).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'ru')).slice(0,10);}
+    function renderDashBars(id,entries){const el=document.getElementById(id);if(!el)return;if(!entries.length){el.innerHTML='<div class="dash-empty">Нет данных для построения рейтинга.</div>';return}const max=Math.max(...entries.map(x=>x[1]),1);el.innerHTML=entries.map(([n,v],i)=>`<div class="dash-bar-row"><div class="dash-bar-label" title="${escapeHtml(n)}">${i+1}. ${escapeHtml(n)}</div><div class="dash-bar-track"><div class="dash-bar-fill" style="width:${Math.max(4,v/max*100)}%"></div></div><div class="dash-bar-value">${v}</div></div>`).join('');}
+    function renderDashMonthly(rows){const el=document.getElementById('dashMonthlyChart');if(!el)return;const now=new Date(),months=[];for(let i=11;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth()-i,1);months.push(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`)}const counts=new Map(months.map(m=>[m,0]));rows.forEach(r=>{const k=dashMonthKey(r.date);if(counts.has(k))counts.set(k,counts.get(k)+1)});const max=Math.max(...counts.values(),1);el.innerHTML=months.map(k=>{const n=counts.get(k),h=Math.max(3,n/max*100);return `<div class="month-col"><div class="month-value">${n||''}</div><div class="month-bar-wrap"><div class="month-bar" style="height:${h}%" title="${dashMonthLabel(k)}: ${n} записей"></div></div><div class="month-label">${dashMonthLabel(k)}</div></div>`}).join('');}
+    function renderDashRshn(){const el=document.getElementById('dashRshnTable');if(!el)return;const rows=window.rshnCountryUpdates||[];if(!rows.length){el.innerHTML='<div class="dash-empty">Данные РСХН ещё не загружены. Они появятся после обновления вкладки РСХН.</div>';return}const now=Date.now(),b={today:0,week:0,month:0,old:0};rows.forEach(r=>{if(!r.ts)return;const days=Math.max(0,(now-r.ts)/86400000);if(days<1)b.today++;else if(days<=7)b.week++;else if(days<=30)b.month++;else b.old++});const newest=rows[0]?.dateText||'—',oldest=rows[rows.length-1]?.dateText||'—';el.innerHTML=`<div class="rshn-summary-card"><strong>🟢 ${b.today}</strong><span>изменились сегодня</span></div><div class="rshn-summary-card"><strong>🔵 ${b.week}</strong><span>изменились за 7 дней</span></div><div class="rshn-summary-card"><strong>🟡 ${b.month}</strong><span>изменились за 8–30 дней</span></div><div class="rshn-summary-card"><strong>🔴 ${b.old}</strong><span>старше 30 дней</span></div><div class="rshn-summary-card"><strong>📅 ${escapeHtml(newest)}</strong><span>самое свежее изменение</span></div><div class="rshn-summary-card"><strong>⌛ ${escapeHtml(oldest)}</strong><span>самое старое изменение</span></div>`;}
+    function renderDashboard(){if(!fullData.length)return;const cs=new Set(fullData.map(d=>d.country).filter(Boolean)),cr=new Set(fullData.map(d=>d.crop).filter(Boolean)),ob=new Set(fullData.map(d=>d.rus).filter(Boolean)),dated=fullData.filter(d=>dashParseDate(d.date));const latest=dated.length?dated.reduce((a,b)=>dashParseDate(a.date)>dashParseDate(b.date)?a:b):null;document.getElementById('dashboardMetrics').innerHTML=[['🌍',cs.size.toLocaleString('ru-RU'),'Стран в базе'],['🌾',cr.size.toLocaleString('ru-RU'),'Культур'],['📋',fullData.length.toLocaleString('ru-RU'),'Требований / записей'],['🦠',ob.size.toLocaleString('ru-RU'),'Карантинных объектов'],['🕒',escapeHtml(latest?.date||'—'),'Последнее изменение']].map(x=>`<div class="dashboard-metric"><div class="metric-icon">${x[0]}</div><div class="metric-value">${x[1]}</div><div class="metric-label">${x[2]}</div></div>`).join('');renderDashBars('dashTopCountries',dashCount(fullData.map(d=>d.country)));const cropCountry=new Map();fullData.forEach(d=>{if(!d.crop||!d.country)return;if(!cropCountry.has(d.crop))cropCountry.set(d.crop,new Set());cropCountry.get(d.crop).add(d.country)});renderDashBars('dashTopCrops',[...cropCountry.entries()].map(([n,set])=>[n,set.size]).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'ru')).slice(0,10));renderDashBars('dashCountryChanges',dashDistinctDateCount(dated,'country',30));renderDashBars('dashCropChanges',dashDistinctDateCount(dated,'crop',30));renderDashMonthly(dated);renderDashRshn();}
+    function initDashboard(){renderDashboard(); initAnalytics();}
+    function initMobileQuickSearch(){const input=document.getElementById('mobileQuickSearchInput'),results=document.getElementById('mobileQuickSearchResults'),clear=document.getElementById('mobileQuickSearchClear');if(!input||input.dataset.ready)return;input.dataset.ready='1';const close=()=>{results.innerHTML='';results.classList.remove('show')};clear.addEventListener('click',()=>{input.value='';close();input.focus()});input.addEventListener('input',()=>{const q=input.value.trim().toLowerCase();if(q.length<2){close();return}const found=[],seen=new Set(),add=(type,name)=>{const key=type+'|'+name;if(!name||seen.has(key))return;seen.add(key);found.push({type,name})};countries.filter(x=>x.toLowerCase().includes(q)).slice(0,4).forEach(x=>add('Страна',x));[...cropsSet].filter(x=>x.toLowerCase().includes(q)).slice(0,4).forEach(x=>add('Культура',x));allObjects.filter(x=>x.toLowerCase().includes(q)).slice(0,4).forEach(x=>add('Объект',x));results.innerHTML=found.slice(0,8).map(x=>`<button class="mobile-search-result" type="button" data-type="${escapeHtml(x.type)}" data-name="${escapeHtml(x.name)}">${escapeHtml(x.name)}<small>${x.type}</small></button>`).join('')||'<div class="mobile-search-result">Ничего не найдено</div>';results.classList.add('show');results.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{const type=btn.dataset.type,name=btn.dataset.name;close();input.value=name;if(type==='Страна'){document.querySelector('[data-tab="tab1"]')?.click();const e=document.getElementById('countrySelect');if(e){e.value=name;e.dispatchEvent(new Event('change'))}}else if(type==='Культура'){document.querySelector('[data-tab="tab1"]')?.click();const e=document.getElementById('cropSelect');if(e){e.value=name;e.dispatchEvent(new Event('change'))}}else{document.querySelector('[data-tab="tab2"]')?.click();const e=document.getElementById('objectSearchInput');if(e){e.value=name;e.dispatchEvent(new Event('input'))}}}));});document.addEventListener('click',e=>{if(!document.getElementById('mobileQuickSearch')?.contains(e.target))close()});}
 
     // ========================================================================
     //  АНАЛИТИКА — ЦЕНТР АНАЛИЗА
@@ -5507,18 +5458,20 @@
             const target = document.getElementById(this.dataset.tab);
             if (target) target.classList.add('active');
             
-            if (this.dataset.tab === 'tab4') updateRefPanel();
-            if (this.dataset.tab === 'tabAnalytics') initAnalytics();
+            if (this.dataset.tab === 'tabDashboard') initDashboard();
             if (this.dataset.tab === 'tabRshnUpdates') loadRshnUpdates();
         });
     });
 
     // Кнопка ручного обновления списка РСХН.
     document.getElementById('rshnRefreshBtn')?.addEventListener('click', loadRshnUpdates);
+    document.getElementById('dashboardRefreshBtn')?.addEventListener('click', () => { loadRshnUpdates(); renderDashboard(); initAnalytics(); });
+    initMobileQuickSearch();
 
     // ===== ЗАПУСК =====
     loadData();
     loadRshnUpdates();
+    renderDashboard();
 </script>
 </body>
 </html>

@@ -4983,7 +4983,7 @@
     }
 
     function getResearchType(vid) {
-        const v = vid.toLowerCase();
+        const v = normalizeText(vid).toLowerCase();
         if (v.includes('энтомолог')) return 'Энтомология';
         if (v.includes('герболог')) return 'Гербология';
         if (v.includes('вирусолог')) return 'Вирусология';
@@ -4993,103 +4993,247 @@
         return 'Прочее';
     }
 
-    // ===== БЫСТРЫЙ ПАРСИНГ CSV =====
+    // ===== НАДЁЖНАЯ НОРМАЛИЗАЦИЯ ТЕКСТА =====
+    // Убираем BOM, неразрывные/невидимые пробелы и приводим Unicode
+    // к единому виду. Это важно для Google Sheets: визуально одинаковые
+    // строки могут отличаться по кодам символов.
+    function normalizeText(value) {
+        return String(value ?? '')
+            .replace(/^\uFEFF/, '')
+            .normalize('NFKC')
+            .replace(/[\u00A0\u2007\u202F]/g, ' ')
+            .replace(/[\u200B-\u200D\u2060\uFEFF]/g, '')
+            .replace(/\r/g, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+    // Сравнение пользовательских/табличных значений без скрытых Unicode-отличий.
+    function sameText(a, b) {
+        return normalizeText(a) === normalizeText(b);
+    }
+
+    // ===== ПОЛНОЦЕННЫЙ CSV-ПАРСЕР =====
+    // В отличие от старого split('\\n'), этот парсер корректно обрабатывает
+    // запятые, кавычки и переносы строк внутри CSV-полей.
     function parseCSVFast(text) {
-        const lines = text.split('\n');
         const result = [];
-        for (let line of lines) {
-            if (!line.trim()) continue;
-            const row = [];
-            let current = '', inQuotes = false;
-            for (let i = 0; i < line.length; i++) {
-                const ch = line[i];
-                if (inQuotes) {
-                    if (ch === '"' && line[i+1] === '"') { current += '"'; i++; }
-                    else if (ch === '"') inQuotes = false;
-                    else current += ch;
+        const row = [];
+        let current = '';
+        let inQuotes = false;
+
+        text = String(text ?? '').replace(/^\uFEFF/, '');
+
+        for (let i = 0; i < text.length; i++) {
+            const ch = text[i];
+
+            if (inQuotes) {
+                if (ch === '"') {
+                    if (text[i + 1] === '"') {
+                        current += '"';
+                        i++;
+                    } else {
+                        inQuotes = false;
+                    }
                 } else {
-                    if (ch === '"') inQuotes = true;
-                    else if (ch === ',') { row.push(current); current = ''; }
-                    else current += ch;
+                    current += ch;
                 }
+                continue;
             }
-            row.push(current);
-            result.push(row);
+
+            if (ch === '"') {
+                inQuotes = true;
+            } else if (ch === ',') {
+                row.push(current);
+                current = '';
+            } else if (ch === '\n') {
+                row.push(current);
+                result.push([...row]);
+                row.length = 0;
+                current = '';
+            } else if (ch === '\r') {
+                // CRLF: \n обработает конец строки. Одинокий CR тоже считаем
+                // переводом строки ниже.
+                if (text[i + 1] !== '\n') {
+                    row.push(current);
+                    result.push([...row]);
+                    row.length = 0;
+                    current = '';
+                }
+            } else {
+                current += ch;
+            }
         }
+
+        // Последняя строка без завершающего \n.
+        if (current !== '' || row.length) {
+            row.push(current);
+            if (row.some(v => normalizeText(v) !== '')) result.push([...row]);
+        }
+
         return result;
     }
 
     // ===== ОСНОВНАЯ ЗАГРУЗКА ДАННЫХ =====
     async function loadData() {
-            try {
+        try {
             document.getElementById('countrySelect').innerHTML = '<option value="">Загрузка...</option>';
             document.getElementById('mapCropSelect').innerHTML = '<option value="">Загрузка...</option>';
             document.getElementById('mapObjectSelect').innerHTML = '<option value="">Загрузка...</option>';
 
-            const resp = await fetch(CSV_URL, { headers: { 'Cache-Control': 'no-cache' } });
-            if (!resp.ok) throw new Error(`Ошибка HTTP: ${resp.status}`);
-            const csvText = await resp.text();
-            const rows = parseCSVFast(csvText);
-            if (rows.length < 2) throw new Error('Таблица пуста');
+            // cache-bust нужен для опубликованного CSV Google Sheets:
+            // браузер/прокси не должны отдавать старую версию публикации.
+            const separator = CSV_URL.includes('?') ? '&' : '?';
+            const url = `${CSV_URL}${separator}_ts=${Date.now()}`;
 
-            const idxCountry = 0, idxLatin = 1, idxRus = 2, idxVid = 3, idxCrop = 4, idxSpec = 7, idxDate = 16;
+            const resp = await fetch(url, {
+                method: 'GET',
+                cache: 'no-store',
+                headers: {
+                    'Cache-Control': 'no-cache, no-store, max-age=0',
+                    'Pragma': 'no-cache'
+                }
+            });
+
+            if (!resp.ok) throw new Error(`Ошибка HTTP: ${resp.status}`);
+
+            const csvText = await resp.text();
+            if (!csvText || !csvText.trim()) throw new Error('Google Sheets вернул пустой CSV');
+
+            const rows = parseCSVFast(csvText);
+            if (rows.length < 2) throw new Error('Таблица пуста или CSV не распознан');
+
+            // A — страна, B — латинское название, C — русское название,
+            // D — вид исследования, E — культура, H — спец. требования,
+            // Q — дата изменения.
+            const idxCountry = 0;
+            const idxLatin = 1;
+            const idxRus = 2;
+            const idxVid = 3;
+            const idxCrop = 4;
+            const idxSpec = 7;
+            const idxDate = 16;
 
             fullData = [];
             const cropsSetLocal = new Set();
             const allObjectsLocal = [];
 
+            let skippedRows = 0;
+            const targetDiagnostics = [];
+
             for (let i = 1; i < rows.length; i++) {
                 const row = rows[i];
-                if (!row || row.length < 5) continue;
-                const country = row[idxCountry]?.trim() || '';
-                if (!country) continue;
-                const crop = row[idxCrop]?.trim() || '';
-                if (!crop) continue;
-                const rus = row[idxRus]?.trim() || '';
-                if (!rus) continue;
+
+                // Диагностика именно проблемного объекта. Оставляем в console,
+                // чтобы можно было сразу увидеть, пришла ли строка из Google Sheets.
+                const rawJoined = row.map(v => String(v ?? '')).join(' ');
+                if (/Phymatotrichopsis|Техасская корневая гниль/i.test(rawJoined)) {
+                    targetDiagnostics.push({
+                        csvRow: i + 1,
+                        columns: row.length,
+                        raw: [...row]
+                    });
+                }
+
+                if (!row || row.length < 5) {
+                    skippedRows++;
+                    continue;
+                }
+
+                const country = normalizeText(row[idxCountry]);
+                const crop = normalizeText(row[idxCrop]);
+                const rus = normalizeText(row[idxRus]);
+
+                // Строка считается валидной только если заполнены ключевые
+                // поля A (страна), E (культура), C (объект).
+                if (!country || !crop || !rus) {
+                    skippedRows++;
+                    continue;
+                }
 
                 fullData.push({
-                    country, crop,
-                    latin: row[idxLatin]?.trim() || '',
-                    rus: rus,
-                    vid: row[idxVid]?.trim() || '',
-                    spec: row[idxSpec]?.trim() || '',
-                    date: row[idxDate]?.trim() || ''
+                    country,
+                    crop,
+                    latin: normalizeText(row[idxLatin]),
+                    rus,
+                    vid: normalizeText(row[idxVid]),
+                    spec: normalizeText(row[idxSpec]),
+                    date: normalizeText(row[idxDate])
                 });
+
                 cropsSetLocal.add(crop);
                 allObjectsLocal.push(rus);
             }
 
             cropsSet = cropsSetLocal;
-            allObjects = [...new Set(allObjectsLocal)].sort();
+            allObjects = [...new Set(allObjectsLocal)].sort((a, b) => a.localeCompare(b, 'ru'));
 
-            if (fullData.length === 0) throw new Error('Нет данных');
+            if (fullData.length === 0) throw new Error('Нет валидных данных в опубликованном CSV');
 
             const countrySet = new Set(fullData.map(d => d.country));
-            countries = Array.from(countrySet).sort();
+            countries = Array.from(countrySet).sort((a, b) => a.localeCompare(b, 'ru'));
+
+            // Подробная диагностика в консоли.
+            console.info('[Google Sheets] CSV строк:', rows.length);
+            console.info('[Google Sheets] Загружено записей:', fullData.length);
+            console.info('[Google Sheets] Пропущено строк:', skippedRows);
+
+            if (targetDiagnostics.length) {
+                console.info(
+                    '[Google Sheets] Найдена строка Phymatotrichopsis / Техасская корневая гниль:',
+                    targetDiagnostics
+                );
+            } else {
+                console.warn(
+                    '[Google Sheets] В ПОЛУЧЕННОМ CSV нет Phymatotrichopsis / Техасская корневая гниль. ' +
+                    'Если строка есть в интерфейсе Google Sheets, проверьте, что опубликован именно gid=2058367012.'
+                );
+            }
+
+            const targetRows = fullData.filter(d =>
+                /phymatotrichopsis/i.test(d.latin) ||
+                /техасская корневая гниль/i.test(d.rus)
+            );
+            console.info('[Google Sheets] Целевая запись после фильтрации:', targetRows);
 
             populateSelects();
             populateMapCropSelect();
             populateMapObjectSelect();
             initMap();
 
-            document.getElementById('countrySelect').addEventListener('change', onCountryChange);
-            document.getElementById('cropSelect').addEventListener('change', onCropChange);
-            document.getElementById('mapModeSelect').addEventListener('change', onMapModeChange);
-            document.getElementById('mapCropSelect').addEventListener('change', onMapCropChange);
-            document.getElementById('mapObjectSelect').addEventListener('change', onMapObjectChange);
+            // Защита от повторной установки обработчиков при ручной перезагрузке.
+            const bindOnce = (id, event, handler) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                el.onchange = null;
+                el.addEventListener(event, handler);
+            };
+
+            bindOnce('countrySelect', 'change', onCountryChange);
+            bindOnce('cropSelect', 'change', onCropChange);
+            bindOnce('mapModeSelect', 'change', onMapModeChange);
+            bindOnce('mapCropSelect', 'change', onMapCropChange);
+            bindOnce('mapObjectSelect', 'change', onMapObjectChange);
 
             initObjectSearch();
             renderMultiCheckboxes();
             initMergeRequirements();
 
+            const statusLine = document.getElementById('statusLine');
+            if (statusLine && !document.getElementById('countrySelect').value) {
+                statusLine.innerHTML =
+                    `<div class="text-muted" style="padding:6px 0;">Загружено записей: <strong>${fullData.length.toLocaleString('ru-RU')}</strong></div>`;
+            }
+
         } catch (e) {
-            console.error(e);
+            console.error('[Google Sheets] Ошибка загрузки:', e);
             document.getElementById('countrySelect').innerHTML = '<option value="">Ошибка</option>';
             document.getElementById('mapCropSelect').innerHTML = '<option value="">Ошибка</option>';
             document.getElementById('mapObjectSelect').innerHTML = '<option value="">Ошибка</option>';
-            document.querySelector('#tableWrap').innerHTML = `<div class="error">⚠️ ${e.message}</div>`;
-            document.getElementById('mapContainer').innerHTML = `<div class="error">⚠️ ${e.message}</div>`;
+            document.querySelector('#tableWrap').innerHTML =
+                `<div class="error">⚠️ ${escapeHtml(e.message || 'Неизвестная ошибка загрузки')}</div>`;
+            document.getElementById('mapContainer').innerHTML =
+                `<div class="error">⚠️ ${escapeHtml(e.message || 'Неизвестная ошибка загрузки')}</div>`;
         }
     }
 
